@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     categories = Category.new(permit)
     if categories.valid?
       categories.save
-      render json: categories
+      render json: categories, :except => [:created_at, :updated_at]
     else
       render json: categories.errors
     end
@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
 		if categories == nil
 			render json:  {"error" => "No hay categorias que listar"}
     else
-      render json: categories
+      render json: categories, :except => [:created_at, :updated_at]
     end   
 	end
 	def show_task
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 	end
 	def list_tasks
 		categories = Category.includes(:tasks) 
-		render json: {category: categories}, include: :tasks, :except => [:created_at, :updated_at, :category_id]
+		render json: {category: categories}, :include => [:tasks], :except => [:created_at, :updated_at, :category_id]
 	end 
 	private
 		def permit
