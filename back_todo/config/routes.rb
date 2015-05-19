@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'tasks' => 'tasks#index'
   post 'tasks' => 'tasks#create'
   put 'tasks/:id' => 'tasks#update'
+  put 'tasks/:id/done' => 'tasks#done'
   #resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.

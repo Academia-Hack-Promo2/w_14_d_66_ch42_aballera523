@@ -21,6 +21,23 @@ class TasksController < ApplicationController
 			render json: task.errors.messages
 		end
 	end
+
+	def done
+		exist = Task.exists?(params[:id])
+		if exist
+			task = Task.find(params[:id])
+			if task[:status] == "done"
+				status = {"status" => "undone"}
+			else
+				status = {"status" => "done"}
+			end
+			task = Task.update(params[:id], status)
+			render json: task
+		else
+			render json: {"error" => "La tarea no existe"}
+		end
+	end
+
 	private
 		def permit
 			params.permit(:title, :status, :date, :priority, :category_id)
