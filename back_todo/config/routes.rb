@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #end
   get 'tasks' => 'tasks#index'
   post 'tasks' => 'tasks#new'
+  put 'tasks/:id' => 'tasks#update'
   #resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.
