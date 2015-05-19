@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'tasks' => 'tasks#index'
   post 'tasks' => 'tasks#create'
   put 'tasks/:id' => 'tasks#update'
+  put 'tasks/:id/done' => 'tasks#done'
   delete 'tasks/:id' => 'tasks#destroy'
+
   #resources :tasks
 
   post 'categories' => 'categories#create'
