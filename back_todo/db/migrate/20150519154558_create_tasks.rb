@@ -1,7 +1,7 @@
 class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
-      t.string :title, null: false, limit: 150
+      t.string :title, null: false, limit: 255
       t.string :status, null: false, limit: 12
       t.string :priority, null: false, limit: 12
       t.date :date
