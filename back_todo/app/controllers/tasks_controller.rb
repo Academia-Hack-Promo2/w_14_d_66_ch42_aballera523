@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 		if valid
 			task = Task.find(params[:id].to_i)
 			task.delete
-			render json: {"Alerta" => "Eliminado correctamente"}
+			render json: task
 		else
 			render json: {"Error 404" => "Esa tarea no existe"}
 		end
