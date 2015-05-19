@@ -21,6 +21,7 @@ class TasksController < ApplicationController
 			render json: task.errors.messages
 		end
 	end
+<<<<<<< HEAD
 
 	def done
 		exist = Task.exists?(params[:id])
@@ -38,6 +39,18 @@ class TasksController < ApplicationController
 		end
 	end
 
+=======
+	def destroy
+		valid = Task.exists?(params[:id].to_i)
+		if valid
+			task = Task.find(params[:id].to_i)
+			task.delete
+			render json: task
+		else
+			render json: {"Error 404" => "Esa tarea no existe"}
+		end
+	end
+>>>>>>> 2ea0ec4bd6d88f7df81fc9e5c272de8c7902c0e0
 	private
 		def permit
 			params.permit(:title, :status, :date, :priority, :category_id)
