@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #  resources :tasks 
   #end
   get 'tasks' => 'tasks#index'
-  post 'tasks' => 'tasks#new'
+  post 'tasks' => 'tasks#create'
   put 'tasks/:id' => 'tasks#update'
   #resources :tasks
 

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 		task = Task.all 
 		render json: task
 	end
-	def new
+	def create
 		task = Task.new(permit)
 		if task.valid?
 			task.save
