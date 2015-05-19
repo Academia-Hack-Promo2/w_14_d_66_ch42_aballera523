@@ -8,9 +8,6 @@ class CategoriesController < ApplicationController
       render json: categories.errors
     end
   end
-    
-
-
 	def list
 		categories = Category.all 
 		if categories == nil
@@ -19,10 +16,22 @@ class CategoriesController < ApplicationController
       render json: categories
     end   
 	end
-
-  def permit
-    params.permit(:name)
-  end
+	def show_task
+		if Category.exists?(params[:id])
+	    	categories = Category.find(params[:id])
+	    	render json: {category: categories, task: categories.tasks}, :except => [:created_at, :updated_at, :category_id]
+		else
+			render json: "No existe la categoria"
+		end
+	end
+	def list_tasks
+		categories = Category.includes(:tasks) 
+		render json: {category: categories}, include: :tasks, :except => [:created_at, :updated_at, :category_id]
+	end 
+	private
+		def permit
+			params.permit(:name)
+		end
 end
 
 
