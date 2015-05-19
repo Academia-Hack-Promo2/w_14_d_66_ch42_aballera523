@@ -10,9 +10,6 @@ class CategoriesController < ApplicationController
   end
 	def list
 		categories = Category.all 
-		if categories == nil
-			render json:  {"error" => "No hay categorias que listar"}
-    else
       render json: categories, :except => [:created_at, :updated_at]
     end   
 	end
