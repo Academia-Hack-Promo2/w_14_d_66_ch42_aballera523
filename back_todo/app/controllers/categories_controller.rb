@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 	end
 	def list_tasks
 		categories = Category.includes(:tasks) 
-		render json: {category: categories}, :include => [:tasks], :except => [:created_at, :updated_at, :category_id]
+		render json: categories, :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
 	private
 		def permit
