@@ -38,6 +38,19 @@ class CategoriesController < ApplicationController
 		categories = Category.includes(:tasks) 
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
+	def find
+		
+		if Category.exists?(params[:id])
+			render json: Category.find(params[:id])
+		else
+			render json: {"error"=> "La categoria no existe"}
+		end
+	end
+	def delete
+		category = Category.find(params[:id].to_i)
+		category.destroy
+		render json: category
+	end
 	private
 		def permit
 			params.permit(:name)
