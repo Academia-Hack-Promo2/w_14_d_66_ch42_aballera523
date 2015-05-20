@@ -3,14 +3,14 @@ class CategoriesController < ApplicationController
     categories = Category.new(permit)
     if categories.valid?
       categories.save
-      render json: categories, :except => [:created_at, :updated_at]
+      render json: categories
     else
       render json: categories.errors
     end
   end
 	def list
 		categories = Category.all 
-      render json: categories, :except => [:created_at, :updated_at]
+      render json: categories
        
 	end
 	def show_task

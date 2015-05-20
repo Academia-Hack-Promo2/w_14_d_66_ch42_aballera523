@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
 	def index
 		task = Task.all 
-		render json: task, :except => [:created_at, :updated_at]
+		render json: task
 	end
 	def create
 		task = Task.new(permit)
 		if task.valid?
 			task.save
-			render json: task, :except => [:created_at, :updated_at]
+			render json: task
 		else
 			render json: task.errors.messages			
 		end
@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 		valid = Task.exists?(params[:id].to_i)
 		if valid
 			task = Task.update(params[:id].to_i, permit)
-			render json: task, :except => [:created_at, :updated_at]
+			render json: task
 		else
 			render json: task.errors.messages
 		end
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
 				status = {"status" => "done"}
 			end
 			task = Task.update(params[:id], status)
-		 	render json: task, :except => [:created_at, :updated_at]
+		 	render json: task
 		else
 			render json: {"error" => "La tarea no existe"}
 		end
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 		if valid
 			task = Task.find(params[:id].to_i)
 			task.delete
-			render json: task, :except => [:created_at, :updated_at]
+			render json: task
 		else
 			render json: {"Error 404" => "Esa tarea no existe"}
 		end
