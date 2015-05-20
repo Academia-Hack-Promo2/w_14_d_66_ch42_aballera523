@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :category
 
-	validates :title, presence: true, uniqueness: true, length: { maximum: 255 }
+	validates :title, presence: true, length: { maximum: 255 }
 	validates :status, presence: true, inclusion: { in: %w(done undone),
     message: "%{value} option is not valid" }
 	validates :priority, presence: true, inclusion: { in: %w(low  high  medium),
