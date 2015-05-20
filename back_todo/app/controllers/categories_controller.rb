@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 	def list
 		categories = Category.all 
       render json: categories, :except => [:created_at, :updated_at]
-    end   
+       
 	end
 	def show_task
 		if Category.exists?(params[:id])
