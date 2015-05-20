@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
     end
   end
   def update
-    
     if Category.exists?(params[:id].to_i)
       valid = Category.find(params[:id])
       valid = Category.update(params[:id],permit)
@@ -20,15 +19,19 @@ class CategoriesController < ApplicationController
   end
 
 	def list
-		categories = Category.all 
+    categories = Category.all
+    existe = Category.exists?
+    if existe 
       render json: categories
-       
-	end
+    else
+      render json: {"error" => "No hay categorias que listar"}
+    end   
+  end
   
 	def show_task
 		if Category.exists?(params[:id])
-	    	categories = Category.find(params[:id])
-	    	render json: {category: categories, task: categories.tasks}, :except => [:created_at, :updated_at, :category_id]
+	    categories = Category.find(params[:id])
+	    render json: {category: categories, task: categories.tasks}, :except => [:created_at, :updated_at, :category_id]
 		else
 			render json: "No existe la categoria"
 		end
