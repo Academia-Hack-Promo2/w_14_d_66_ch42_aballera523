@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 			render json: task.errors.messages			
 		end
 	end
+	
 	def update
 		valid = Task.exists?(params[:id].to_i)
 		if valid
@@ -23,20 +24,19 @@ class TasksController < ApplicationController
 	end
 
 	def done
-		exist = Task.exists?(params[:id])
-		if exist
-			task = Task.find(params[:id])
+		task = Task.find(params[:id])
+		if task
 			if task[:status] == "done"
 				status = {"status" => "undone"}
 			else
 				status = {"status" => "done"}
 			end
 			task = Task.update(params[:id], status)
-			render json: task
+		 	render json: task, :except => [:created_at, :updated_at]
 		else
 			render json: {"error" => "La tarea no existe"}
 		end
-	end
+	end		
 
 	def destroy
 		valid = Task.exists?(params[:id].to_i)
