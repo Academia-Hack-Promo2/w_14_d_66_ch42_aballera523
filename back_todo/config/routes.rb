@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'categories' => 'categories#list'
   get 'categories/:id/tasks' => 'categories#show_task'
   get 'categories/tasks' => 'categories#list_tasks'
+  put 'categories/:id' => 'categories#update'
+  delete 'categories/:id' => 'categories#delete'
+  get 'categories/find/:id' => 'categories#find'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

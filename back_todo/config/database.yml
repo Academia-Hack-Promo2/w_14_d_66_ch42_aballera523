@@ -17,7 +17,6 @@ default: &default
   password: v08983523
 
   socket: /var/run/mysqld/mysqld.sock
-
 development:
   <<: *default
   database: back_todo_development
