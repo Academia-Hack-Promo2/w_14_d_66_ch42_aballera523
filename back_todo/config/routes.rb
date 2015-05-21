@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   put 'tasks/:id' => 'tasks#update'
   put 'tasks/:id/status' => 'tasks#updateStatus'
   delete 'tasks/:id' => 'tasks#destroy'
+  get 'tasks/:id' => 'tasks#show'
 
   #resources :tasks
 
