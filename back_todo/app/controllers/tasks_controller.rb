@@ -5,19 +5,19 @@ class TasksController < ApplicationController
     if task.exists?
 		  render json: task, :except => [:created_at, :updated_at]
     else
-      render json: {"mensaje" => "No hay tareas que listar"}
+      render json: {"id":nil, "error":"Mensaje de error "}
     end
 	end
 
 	def create
 		task = Task.new(permit)
 		if task.category_id == nil
-			category =	Category.find_by name: 'uncategorised'
+			category =	Category.find_by name: 'uncategorized'
 			if category
 				task.category_id = category.id			
 			else
 				category = Category.new
-				category.name = 'uncategorised'
+				category.name = 'uncategorized'
 				category.save
 				task.category_id = category.id
 			end
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
 		if valid
 			render json: valid, :except =>[:created_at, :updated_at]
 		else
-			render json: {"Error" => "La Tarea No Existe"}
+			render json: {"id":nil, "error":"Mensaje de error "}
 		end	
 	end
 
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
 			task = Task.update(params[:id], permit)
 			render json: task, :except => [:title, :priority, :date, :category_id, :created_at, :updated_at]
 		else
-			render json: {"Error" => "La Tarea No Existe"}
+			render json: {"id":nil, "error":"Mensaje de error "}
 		end
 	end
 	
