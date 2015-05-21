@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     end 
   end
 
-	def list
+	def index
     categories = Category.all
     existe = Category.exists?
     if existe 
@@ -42,24 +42,29 @@ class CategoriesController < ApplicationController
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
 
-	def find
-		
+	def show
 		if Category.exists?(params[:id])
 			render json: Category.find(params[:id]), :except =>[:created_at, :updated_at]
 		else
 			render json: {"error"=> "La categoria no existe"}
 		end
 	end
-  
+
 	def delete
 		category = Category.find(params[:id].to_i)
 		category.destroy
 		render json: category
 	end
+
+  def delete ()
+    category 
+  end
+
 	private
 	def permit
 		params.permit(:name)
 	end
+
 end
 
 

@@ -2,7 +2,11 @@ class TasksController < ApplicationController
 
 	def index
 		task = Task.all 
-		render json: task, :except => [:created_at, :updated_at]
+    if task.exists?
+		  render json: task, :except => [:created_at, :updated_at]
+    else
+      render json: {"mensaje" => "No hay tareas que listar"}
+    end
 	end
 
 	def create
@@ -55,13 +59,12 @@ class TasksController < ApplicationController
 	end
 	
 	def destroy
-		valid = Task.exists?(params[:id].to_i)
-		if valid
-			task = Task.find(params[:id].to_i)
+		task = Task.find(params[:id].to_i)
+    if task
 			task.delete
-			render json: {"Mensaje" => "La Tarea Fue Eliminada"}
+			render json: {"result":true}
 		else
-			render json: {"Error" => "La Tarea No Existe"}
+			render json: {"result":false, "error":"Mensaje de error"}
 		end
 	end
 
