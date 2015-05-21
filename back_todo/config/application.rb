@@ -24,7 +24,7 @@ module BackTodo
     config.middleware.use Rack::Cors do
         allow do
             origins '*'
-            resource '*', :headers => :any, :methods => [:get, :post, :delete, :put]
+            resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch]
         end
     end
   end

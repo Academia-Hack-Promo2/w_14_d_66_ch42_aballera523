@@ -49,7 +49,7 @@ class TasksController < ApplicationController
 			render json: {"id":nil, "error":"Mensaje de error "}
 		end	
 	end
-
+#los metodos deben ser en minusci¿ulas y con _
 	def updateStatus
 		if Task.exists?(params[:id].to_i)
 			task = Task.update(params[:id], permit)

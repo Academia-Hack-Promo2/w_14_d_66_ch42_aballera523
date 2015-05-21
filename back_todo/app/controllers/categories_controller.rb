@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
 		end
 	end
 
-	def list_tasks
+	def list_tasks    
 		categories = Category.includes(:tasks) 
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
@@ -53,8 +53,12 @@ class CategoriesController < ApplicationController
 
 	def delete
 		category = Category.find(params[:id].to_i)
-		category.destroy
-		render json: {"Mensaje" => "La Categoría Fue Borrada y Sus Tareas Enviadas a Uncategorized"}
+		if category
+			category.destroy
+			render json: {"Mensaje" => "La Categoría Fue Borrada y Sus Tareas Enviadas a Uncategorized"}
+		else
+			render json: {"id":nil, "error":"Mensaje de error "}
+		end
 	end
 
 	private
