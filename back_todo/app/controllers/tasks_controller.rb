@@ -1,8 +1,15 @@
 class TasksController < ApplicationController
+
 	def index
 		task = Task.all 
-		render json: task, :except => [:created_at, :updated_at, :category_id], :include => [:category => {:except =>[:created_at, :updated_at, :category_id]}]
+    if task.exists?
+		  render json: task, :except => [:created_at, :updated_at]
+    else
+      render json: {"mensaje" => "No hay tareas que listar"}
+    end
+
 	end
+
 	def create
 		task = Task.new(permit)
 		if task.category_id == nil
@@ -18,9 +25,9 @@ class TasksController < ApplicationController
 		end
 		if task.valid?
 			task.save
-			render json: task, :except => [:created_at, :updated_at]
+			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
 		else
-			render json: task.errors.messages			
+			render json: {"id":nil, "error":"Mensaje de error "}			
 		end
 	end
 
@@ -28,39 +35,42 @@ class TasksController < ApplicationController
 		valid = Task.exists?(params[:id].to_i)
 		if valid
 			task = Task.update(params[:id].to_i, permit)
-			render json: task, :except => [:created_at, :updated_at]
+			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
 		else
-			render json: task.errors.messages
+			render json: {"id":nil, "error":"Mensaje de error "}
 		end
 	end
 
-	def done
-		task = Task.find(params[:id])
-		if task
-			if task[:status] == "done"
-				status = {"status" => "undone"}
-			else
-				status = {"status" => "done"}
-			end
-			task = Task.update(params[:id], status)
-			render json: task, :except => [:created_at, :updated_at]
-		else
-			render json: {"error" => "La tarea no existe"}
-		end
-	end		
-
-	def destroy
-		valid = Task.exists?(params[:id].to_i)
+	def show
+		valid = Task.find(params[:id].to_i)
 		if valid
-			task = Task.find(params[:id].to_i)
-			task.delete
-			render json: task, :except => [:created_at, :updated_at]
+			render json: valid, :except =>[:created_at, :updated_at]
 		else
-			render json: {"Error 404" => "Esa tarea no existe"}
+			render json: {"Error" => "La Tarea No Existe"}
+		end	
+	end
+
+	def updateStatus
+		if Task.exists?(params[:id].to_i)
+			task = Task.update(params[:id], permit)
+			render json: task, :except => [:title, :priority, :date, :category_id, :created_at, :updated_at]
+		else
+			render json: {"Error" => "La Tarea No Existe"}
+		end
+	end
+	
+	def destroy
+		task = Task.find(params[:id].to_i)
+    if task
+			task.delete
+			render json: {"result":true}
+		else
+			render json: {"result":false, "error":"Mensaje de error"}
 		end
 	end
 
 	private
+
 	def permit
 		params.permit(:title, :status, :date, :priority, :category_id)
 	end

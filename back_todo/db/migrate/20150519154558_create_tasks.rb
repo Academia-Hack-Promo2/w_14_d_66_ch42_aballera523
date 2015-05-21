@@ -2,8 +2,8 @@ class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
       t.string :title, null: false, limit: 255
-      t.string :status, null: false, limit: 12
-      t.string :priority, null: false, limit: 12
+      t.integer :status, default: 0, null: false
+      t.integer :priority, default: 0, null: false
       t.date :date
       t.references :category, index: true, foreign_key: true
 

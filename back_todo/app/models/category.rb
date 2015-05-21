@@ -5,10 +5,10 @@ class Category < ActiveRecord::Base
 	
 
 	def recategorized_task
-		category = Category.where('name = ?', 'uncategorised')
+		#category = Category.where('name = ?', 'uncategorised')
 		tasks = Task.where('category_id = ?', self.id)
 		tasks.each do |task|
-			task.update("category_id"=> category.id)
+			task.update("category_id"=> 1)
 		end
 	end
 

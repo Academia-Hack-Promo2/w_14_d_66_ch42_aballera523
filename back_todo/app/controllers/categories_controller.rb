@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
 	attr_accessor :id
 	def create 
 		categories = Category.new(permit)
@@ -20,11 +21,15 @@ class CategoriesController < ApplicationController
 		end 
 	end
 
-	def list
-		categories = Category.all 
-		render json: categories, :except => [:created_at, :updated_at]
-
-	end
+		def index
+    categories = Category.all
+    existe = Category.exists?
+    if existe 
+      render json: categories, :except =>[:created_at, :updated_at]
+    else
+      render json: {"error" => "No hay categorias que listar"}
+    end   
+  end
 
 	def show_task
 		if Category.exists?(params[:id])
@@ -39,13 +44,16 @@ class CategoriesController < ApplicationController
 		categories = Category.includes(:tasks) 
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
-	def find
+
+
+	def show
 		if Category.exists?(params[:id])
-			render json: Category.find(params[:id])
+			render json: Category.find(params[:id]), :except =>[:created_at, :updated_at]
 		else
 			render json: {"error"=> "La categoria no existe"}
 		end
 	end
+
 	def delete
 		if Category.exists?(params[:id])
 			category = Category.find(params[:id].to_i)
@@ -55,6 +63,7 @@ class CategoriesController < ApplicationController
 			render json: {"error"=> "La categoria no existe"}
 		end
 	end
+	
 	private
 	def permit
 		params.permit(:name)
