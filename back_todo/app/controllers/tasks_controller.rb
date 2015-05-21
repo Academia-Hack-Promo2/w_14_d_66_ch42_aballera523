@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     if task.exists?
 		  render json: task, :except => [:created_at, :updated_at]
     else
-      render json: {"id":nil, "error":"Mensaje de error "}
+      render json: {"Mensaje":"No Hay Tareas Que Mostrar"}
     end
 
 	end
