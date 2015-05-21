@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     categories = Category.new(permit)
     if categories.valid?
       categories.save
-      render json: categories
+      render json: categories, :except =>[:created_at, :updated_at]
     else
       render json: categories.errors
     end
@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     if Category.exists?(params[:id].to_i)
       valid = Category.find(params[:id])
       valid = Category.update(params[:id],permit)
-      render json: valid
+      render json: valid , :except =>[:created_at, :updated_at]
     else
       render json:  {"error"=> "La Categoria no Existe"}
     end 
@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     categories = Category.all
     existe = Category.exists?
     if existe 
-      render json: categories
+      render json: categories, :except =>[:created_at, :updated_at]
     else
       render json: {"error" => "No hay categorias que listar"}
     end   
@@ -41,14 +41,16 @@ class CategoriesController < ApplicationController
 		categories = Category.includes(:tasks) 
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
+
 	def find
 		
 		if Category.exists?(params[:id])
-			render json: Category.find(params[:id])
+			render json: Category.find(params[:id]), :except =>[:created_at, :updated_at]
 		else
 			render json: {"error"=> "La categoria no existe"}
 		end
 	end
+  
 	def delete
 		category = Category.find(params[:id].to_i)
 		category.destroy

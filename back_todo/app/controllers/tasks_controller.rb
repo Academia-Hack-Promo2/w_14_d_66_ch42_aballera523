@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
+
 	def index
 		task = Task.all 
 		render json: task, :except => [:created_at, :updated_at]
 	end
+
 	def create
 		task = Task.new(permit)
 		if task.category_id == nil
@@ -34,6 +36,15 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def show
+		valid = Task.find(params[:id].to_i)
+		if valid
+			render json: valid, :except =>[:created_at, :updated_at]
+		else
+			render json: {"Error" => "La Tarea No Existe"}
+		end	
+	end
+
 	def updateStatus
 		if Task.exists?(params[:id].to_i)
 			task = Task.update(params[:id], permit)
@@ -48,13 +59,14 @@ class TasksController < ApplicationController
 		if valid
 			task = Task.find(params[:id].to_i)
 			task.delete
-			render json: task, :except => [:created_at, :updated_at]
+			render json: {"Mensaje" => "La Tarea Fue Eliminada"}
 		else
-			render json: {"Error 404" => "Esa tarea no existe"}
+			render json: {"Error" => "La Tarea No Existe"}
 		end
 	end
 
 	private
+
 	def permit
 		params.permit(:title, :status, :date, :priority, :category_id)
 	end
