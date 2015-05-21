@@ -1,34 +1,35 @@
 class CategoriesController < ApplicationController
-  def create 
-    categories = Category.new(permit)
-    if categories.valid?
-      categories.save
-      render json: categories
-    else
-      render json: categories.errors
-    end
-  end
-  def update
-    
-    if Category.exists?(params[:id].to_i)
-      valid = Category.find(params[:id])
-      valid = Category.update(params[:id],permit)
-      render json: valid
-    else
-      render json:  {"error"=> "La Categoria no Existe"}
-    end 
-  end
+	attr_accessor :id
+	def create 
+		categories = Category.new(permit)
+		if categories.valid?
+			categories.save
+			render json: categories, :except => [:created_at, :updated_at]
+		else
+			render json: categories.errors
+		end
+	end
+	def update
+
+		if Category.exists?(params[:id].to_i)
+			valid = Category.find(params[:id])
+			valid = Category.update(params[:id],permit)
+			render json: valid
+		else
+			render json:  {"error"=> "La Categoria no Existe"}
+		end 
+	end
 
 	def list
 		categories = Category.all 
-      render json: categories
-       
+		render json: categories, :except => [:created_at, :updated_at]
+
 	end
-  
+
 	def show_task
 		if Category.exists?(params[:id])
-	    	categories = Category.find(params[:id])
-	    	render json: {category: categories, task: categories.tasks}, :except => [:created_at, :updated_at, :category_id]
+			categories = Category.find(params[:id])
+			render json: {category: categories, task: categories.tasks}, :except => [:created_at, :updated_at, :category_id]
 		else
 			render json: "No existe la categoria"
 		end
@@ -39,7 +40,6 @@ class CategoriesController < ApplicationController
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
 	def find
-		
 		if Category.exists?(params[:id])
 			render json: Category.find(params[:id])
 		else
@@ -47,14 +47,18 @@ class CategoriesController < ApplicationController
 		end
 	end
 	def delete
-		category = Category.find(params[:id].to_i)
-		category.destroy
-		render json: category
+		if Category.exists?(params[:id])
+			category = Category.find(params[:id].to_i)
+			category.destroy	
+			render json: category, :except =>[:created_at, :updated_at]
+		else	
+			render json: {"error"=> "La categoria no existe"}
+		end
 	end
 	private
-		def permit
-			params.permit(:name)
-		end
+	def permit
+		params.permit(:name)
+	end
 end
 
 
