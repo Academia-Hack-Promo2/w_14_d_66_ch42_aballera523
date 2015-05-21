@@ -6,6 +6,6 @@ class Task < ActiveRecord::Base
 	validates :priority, presence: true, inclusion: { in: :priority }
 	validates :date, presence: true
 
-  enum status: [ :done, :undone ]
+  enum status: [ :undone, :done ]
   enum priority: [ :low, :medium, :high ]
 end
