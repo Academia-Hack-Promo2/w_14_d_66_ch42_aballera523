@@ -26,9 +26,9 @@ class CategoriesController < ApplicationController
 		render json: categories, :except =>[:created_at, :updated_at], :include => [:tasks => {:except =>[:created_at, :updated_at, :category_id]}]
 	end 
 	private
-		def permit
-			params.permit(:name)
-		end
+	def permit
+		params.permit(:name)
+	end
 end
 
 
