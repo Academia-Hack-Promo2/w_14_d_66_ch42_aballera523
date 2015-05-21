@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
 
-	def index
-		task = Task.all 
-    if task.exists?
+	def index		
+    if Task.all 
+    	task = Task.all
 		  render json: task, :except => [:created_at, :updated_at]
     else
       render json: {"Mensaje":"No Hay Tareas Que Mostrar"}
@@ -31,9 +31,8 @@ class TasksController < ApplicationController
 		end
 	end
 
-	def update
-		valid = Task.exists?(params[:id].to_i)
-		if valid
+	def update		
+		if Task.exists?(params[:id].to_i)
 			task = Task.update(params[:id].to_i, permit)
 			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
 		else
@@ -41,16 +40,16 @@ class TasksController < ApplicationController
 		end
 	end
 
-	def show
-		valid = Task.find(params[:id].to_i)
-		if valid
-			render json: valid, :except =>[:created_at, :updated_at]
+	def show		
+		if Task.exists?(params[:id].to_i)
+			task = Task.find(params[:id].to_i)
+			render json: task, :except =>[:created_at, :updated_at]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
 		end	
 	end
-#los metodos deben ser en minusci¿ulas y con _
-	def updateStatus
+
+	def edit_status
 		if Task.exists?(params[:id].to_i)
 			task = Task.update(params[:id], permit)
 			render json: task, :except => [:title, :priority, :date, :category_id, :created_at, :updated_at]
@@ -58,11 +57,19 @@ class TasksController < ApplicationController
 			render json: {"id":nil, "error":"Mensaje de error "}
 		end
 	end
+
+	def edit_priority
+		if Task.exists?(params[:id].to_i)
+			task = Task.update(params[:id], permit)
+			render json: task, :except => [:title, :status, :date, :category_id, :created_at, :updated_at]
+		else
+			render json: {"id":nil, "error":"Mensaje de error "}
+		end
+	end
 	
-	def destroy
-		task = Task.find(params[:id].to_i)
-    if task
-			task.delete
+	def destroy		
+    if Task.exists?(params[:id].to_i)
+    	Task.find(params[:id].to_i).delete
 			render json: {"result":true}
 		else
 			render json: {"result":false, "error":"Mensaje de error"}

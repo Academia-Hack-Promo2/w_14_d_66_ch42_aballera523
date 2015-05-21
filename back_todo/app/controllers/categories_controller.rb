@@ -19,10 +19,9 @@ class CategoriesController < ApplicationController
     end 
   end
 
-	def index
-    categories = Category.all
-    existe = Category.exists?
-    if existe 
+	def index    
+    if Category.all
+    	categories = Category.all
       render json: categories, :except =>[:created_at, :updated_at]
     else
       render json: {"mensaje" => "No hay categorias que listar"}
@@ -51,10 +50,9 @@ class CategoriesController < ApplicationController
 		end
 	end
 
-	def delete
-		category = Category.find(params[:id].to_i)
-		if category
-			category.destroy
+	def delete		
+		if Category.exists?(params[:id].to_i)
+			Category.find(params[:id].to_i).destroy
 			render json: {"Mensaje" => "La Categoría Fue Borrada y Sus Tareas Enviadas a Uncategorized"}
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
