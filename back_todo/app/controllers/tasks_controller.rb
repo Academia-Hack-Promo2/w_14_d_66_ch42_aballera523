@@ -34,21 +34,15 @@ class TasksController < ApplicationController
 		end
 	end
 
-	def done
-		task = Task.find(params[:id])
-		if task
-			if task[:status] == "done"
-				status = {"status" => "undone"}
-			else
-				status = {"status" => "done"}
-			end
-			task = Task.update(params[:id], status)
-			render json: task, :except => [:created_at, :updated_at]
+	def updateStatus
+		if Task.exists?(params[:id].to_i)
+			task = Task.update(params[:id], permit)
+			render json: task, :except => [:title, :priority, :date, :category_id, :created_at, :updated_at]
 		else
-			render json: {"error" => "La tarea no existe"}
+			render json: {"Error" => "La Tarea No Existe"}
 		end
-	end		
-
+	end
+	
 	def destroy
 		valid = Task.exists?(params[:id].to_i)
 		if valid

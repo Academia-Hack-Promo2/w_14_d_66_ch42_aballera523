@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20150519154558) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "title",       limit: 255, null: false
-    t.string   "status",      limit: 12,  null: false
-    t.string   "priority",    limit: 12,  null: false
+    t.string   "title",       limit: 255,             null: false
+    t.integer  "status",      limit: 4,   default: 0, null: false
+    t.integer  "priority",    limit: 4,   default: 0, null: false
     t.date     "date"
     t.integer  "category_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "tasks", ["category_id"], name: "index_tasks_on_category_id", using: :btree

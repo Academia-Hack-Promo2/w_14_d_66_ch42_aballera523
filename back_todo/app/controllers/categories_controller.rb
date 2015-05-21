@@ -55,9 +55,9 @@ class CategoriesController < ApplicationController
 		render json: category
 	end
 	private
-		def permit
-			params.permit(:name)
-		end
+	def permit
+		params.permit(:name)
+	end
 end
 
 
