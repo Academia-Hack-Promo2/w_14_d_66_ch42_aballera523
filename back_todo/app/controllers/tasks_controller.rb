@@ -32,8 +32,8 @@ class TasksController < ApplicationController
 	end
 
 	def update		
-		if Task.exists?(params[:id].to_i)
-			task = Task.update(params[:id].to_i, permit)
+		if Task.exists?(params[:id])
+			task = Task.update(params[:id], permit)
 			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
@@ -41,8 +41,8 @@ class TasksController < ApplicationController
 	end
 
 	def show		
-		if Task.exists?(params[:id].to_i)
-			task = Task.find(params[:id].to_i)
+		if Task.exists?(params[:id])
+			task = Task.find(params[:id])
 			render json: task, :except =>[:created_at, :updated_at]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
 	end
 
 	def edit_status
-		if Task.exists?(params[:id].to_i)
+		if Task.exists?(params[:id])
 			task = Task.update(params[:id], permit)
 			render json: task, :except => [:title, :priority, :date, :category_id, :created_at, :updated_at]
 		else
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 	end
 
 	def edit_priority
-		if Task.exists?(params[:id].to_i)
+		if Task.exists?(params[:id])
 			task = Task.update(params[:id], permit)
 			render json: task, :except => [:title, :status, :date, :category_id, :created_at, :updated_at]
 		else
@@ -68,8 +68,8 @@ class TasksController < ApplicationController
 	end
 	
 	def destroy		
-    if Task.exists?(params[:id].to_i)
-    	Task.find(params[:id].to_i).delete
+    if Task.exists?(params[:id])
+    	Task.find(params[:id]).delete
 			render json: {"result":true}
 		else
 			render json: {"result":false, "error":"Mensaje de error"}

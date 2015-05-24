@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if Category.exists?(params[:id].to_i)
+    if Category.exists?(params[:id])
       valid = Category.find(params[:id])
       valid = Category.update(params[:id],permit)
       render json: valid , :except =>[:created_at, :updated_at]
@@ -51,8 +51,8 @@ class CategoriesController < ApplicationController
 	end
 
 	def delete		
-		if Category.exists?(params[:id].to_i)
-			Category.find(params[:id].to_i).destroy
+		if Category.exists?(params[:id])
+			Category.find(params[:id]).destroy
 			render json: {"Mensaje" => "La Categoría Fue Borrada y Sus Tareas Enviadas a Uncategorized"}
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
