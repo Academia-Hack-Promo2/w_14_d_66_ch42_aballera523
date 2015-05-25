@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Plantilla_para _renderizar_las_tareas</title>
+    <title>p_r_tareas</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/app.png">
@@ -12,49 +12,47 @@
   </head>
   <body>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="row task-gradient">
-            <div class="row">
-              <div class="col-md-3 text-center task-priority date-priority-margin">
-                  o  
-              </div>
-              <div class="col-md-9 text-center task-date date-priority-margin">
-                  fecha  
-              </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4 col-xs-12 degradado">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="priority"></div>
+            </div>            
+            <div class="col-md-9 text-center task-date">
+              <h4>dd/mm/yyyy</h4>  
+            </div> 
+            <hr width="75%" />    
+          </div> 
+          <div class="row">
+            <div class="col-md-12 task-content">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,  
+            </div>
             <hr width="75%" />
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-center task-content">
-                  title
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-center task-category">
-                <hr width="75%" />
-                category
-              </div>
-            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-12 text-center task-category">
+              <strong>Category</strong>
+            </div>  
           </div>
-<!--           <div class="row">
-            <div class="col-md-6 task-done">
-              LISTO!
-            </div>
-            <div class="col-md-3 task-edit">
-              XX
-            </div>
-            <div class="col-md-3 task-delete">
-              Bt
-            </div>
-          </div> -->
-        </div>
+          <div class="row">
+            <button class="btn col-md-6 task-done btn"></button>
+            <button class="btn col-md-3 task-edit btn"></button>
+            <button class="btn col-md-3 task-delete btn"></button>
+          </div>       
       </div>
     </div>
+  </div>
 
 
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+
+
+
+
+
+      <script src="bower_components/jquery/dist/jquery.js"></script>
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
