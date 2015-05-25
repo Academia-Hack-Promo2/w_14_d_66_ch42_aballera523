@@ -15,19 +15,19 @@ var Category = function(container, data){
 }
 
 Category.prototype.init = function(data) {
-  id = data.id;
-  name = data.name;  
+  this.id = data.id;
+  this.name = data.name;  
 };
 
 Category.prototype.draw = function() {
 
-  builder = $("<div/>",{id:'category_'+id,class:"col-xs-12 col-sm-6 col-md-4"}).append(
+  builder = $("<div/>",{id:'category_'+this.id,class:"col-xs-12 col-sm-6 col-md-4"}).append(
     $("<div/>",{class:"row category-gradient"}).append(
       $("<div/>",{class:"row category-header"}).append(
         $("<div/>",{class:"col-md-3 category-algo1"}).html("Algo 1"),
         $("<div/>",{class:"col-md-9 category-algo2"}).html("Algo 2")),
 
-      $("<div/>",{class:"row category-name"}).html(name),
+      $("<div/>",{class:"row category-name"}).html(this.name),
 
       $("<div/>",{class:"row image"}).append(
         $("<img/>",{class:"prueba", src:"images/Categories.jpg"}))),
