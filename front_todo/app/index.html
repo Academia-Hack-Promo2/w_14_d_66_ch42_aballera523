@@ -55,11 +55,16 @@
         </nav>
       </header>
 
-      <section class="container-fluid">
+
+
+
+      <section class="container">
         <div class="row" id="mainbox">
-          <div class="col-md-2 col-sm-6 col-xs-12">
-            <div class="box box-btn"  data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i></div>
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="box box-btn" id="modal_botton" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i></div>
           </div>
+
+
 
         </div>
       </section>
@@ -68,7 +73,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Nueva Tarea</h4>
+              <h4 class="modal-title" >Nueva Tarea</h4>
             </div>
             <div class="modal-body">
               <form> <div class="form-group">
@@ -85,15 +90,14 @@
                   <option value="default">Seleccione categoria</option>
                   <option value="Nueva">Nueva</option>
                 </select>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="newCatergory">Crear categoria</button>
               </div>
-              <input type="title" class="form-control" id="new_category" placeholder="Nueva Categoria">
               <h4 id="error_category"></h4> 
               <div class="form-group">
                 <label for="exampleInputType">
-
+                  Prioridad
                 </label>
                 <select class="form-control" id="priority">
-                  <option value="0">Prioridad</option>
                   <option value="1">Hight</option>
                   <option value="2">Medium</option>
                   <option value="3">Low</option>
@@ -124,7 +128,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-          <button type="button" class="btn btn-primary" id="boton_modal">Guardar Tarea</button>
+          <button type="button" class="btn btn-primary" id="taskNew">Guardar Tarea</button>
         </div>
       </div>
     </div>
@@ -136,9 +140,9 @@
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
 
-  <div class="container tasksSection"></div>
+ <!-- <div class="container tasksSection"></div>
 
-  <div class="container categoriesSection"></div>
+   <div class="container categoriesSection"></div> -->
 
 
 
@@ -173,19 +177,19 @@
   <script src="bower_components/bootstrap/js/tab.js"></script>
   <!-- endbuild -->
 
-  
+
   <!-- build:js({app,.tmp}) scripts/main.js -->
   <script src="scripts/main.js"></script>
   <!-- endbuild -->
   <link rel="stylesheet" href="styles/index.css">
-  
+
   <!-- build:js({app,.tmp}) scripts/main.js -->
-  <script src="scripts/main.js"></script>
   <script src="scripts/task.js"></script>
   <script src="scripts/tasks.js"></script>
   <script src="scripts/category.js"></script>
   <script src="scripts/categories.js"></script>
-  <!-- endbuild -->
   
+  <!-- endbuild -->
+
 </body>
 </html>
