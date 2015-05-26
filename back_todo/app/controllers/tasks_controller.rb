@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 	def index		
     if Task.all 
     	task = Task.all
-		  render json: task, :except => [:created_at, :updated_at]
+		  render json: task, :except => [:created_at, :updated_at, :category_id], :include => [:category => {:except =>[:created_at, :updated_at]}]
     else
       render json: {"Mensaje":"No Hay Tareas Que Mostrar"}
     end

@@ -1,5 +1,6 @@
 /*style plantilla de tarea */
 .degradado{
+  margin-top: 10px;
   border-radius: 20px 20px 0 0;
   background: #3b5761; 
   background: -moz-linear-gradient(top,  #3b5761 0%, #29303d 100%); 
@@ -10,12 +11,9 @@
   background: linear-gradient(to bottom,  #3b5761 0%,#29303d 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b5761', endColorstr='#29303d',GradientType=0 ); 
   color: #fff;
-  height: 200px;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 .priority{
-  margin-top: 10px;
+  margin-top: 15px;
   width: 20px;
   height: 20px;
   border-radius: 20px 20px 20px 20px;
@@ -25,15 +23,14 @@
   box-shadow: 0 0 5px 2px #2A323F;
 }
 .task-date{
-
+  margin-top: 15px
 }
 .task-content{
   min-height: 70px;
   margin-top: -10px;
   height: 100px;
   width: 90%;
-  overflow-y:auto; 
-  overflow-y:hidden;
+  overflow-y:auto;
   margin-bottom: 10px;
   margin-left: 20px;
 }
@@ -42,21 +39,86 @@
   margin-bottom: 10px;
 }
 .task-done{
-  background-color: #d50000;
+  background-color: #c9302c;
   height: 50px;
+  width: 100%;
   border-radius: 0 0 0 20px;
-/*  -webkit-transition:background-color 0.5s linear;  */
 }
 .task-done:hover{
-  background-color: #76ff03;
+  background-color: #449d44;
 }
 .task-edit{
-  background-color: red;
-  height: 50px;
+  background-color: #0DD6C7;
+  height: 50px; 
+  width: 100%; 
   border-radius: 0;
 }
+.task-edit:hover{
+  background-color: #009991;
+}
 .task-delete{
-  background-color: #fff;
+  background-color: #e53935;
   height: 50px;
+  width: 100%;  
   border-radius: 0 0 20px 0;
+}
+.task-delete:hover{
+  background-color: #c62828;
+}
+.glyphicon {
+  font-size: x-large;
+  margin-top: 5px;
+  color: #FFFFFF;
+}
+.col-md-3, .col-sm-4, .col-xs-12{
+  padding-right: 18px;
+  padding-left: 18px;
+}
+
+.task-left {
+  float: left;
+  width: 50%;
+}
+.task-middle {
+  float: left;
+  width: 25%;
+}
+.task-right {
+  float: left;
+  width: 25%;
+}
+hr {
+  margin-top: 0; 
+}
+.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+    border-radius: 20px;
+ }
+.toggle.ios .toggle-handle {
+  border-radius: 20px;
+}
+.toggle.btn {
+  min-width: 100%;
+  min-height: 50px;
+  border-radius: 0 0 0 20px;
+}
+.btn-success:hover {
+  color: #fff;
+}
+.btn-danger:hover {
+  color: #fff;
+}
+.data-off{
+  margin-top: 10px;
+}
+.btn-danger{
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+  font-size: 25px;
+}
+.btn-success{
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+  font-size: 25px;
 }
