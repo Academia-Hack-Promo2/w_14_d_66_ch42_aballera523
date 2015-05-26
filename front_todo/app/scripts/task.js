@@ -31,36 +31,47 @@ Task.prototype.draw = function() {
         $("<div/>",{class:"task-degradado"}).append(
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-3"}).append(
-              $("<div/>",{class:"task-priority"})),
+              $("<div/>",{class:"task-priority"})
+              ),
             $("<div/>",{class:"col-md-9"}).append(
               $("<div/>",{class:"task-date"}).append(
-                $("<h4/>").html(this.date)))),
+                $("<h4/>").html(this.date)
+                )
+              )
+            ),
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-12"}).append(
               $("<hr/>"),
               $("<div/>",{class:"task-title"}).html(this.title),
-              $("<hr/>"))),
+              $("<hr/>")
+              )
+            ),
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-12 text-center"}).append(
               $("<div/>",{class:"task-category"}).append(
-                $("<strong/>").html(this.category))))),
+                $("<strong/>").html(this.category)
+                )
+              )
+            )
+          ),
         $("<div/>",{class:"row"}).append(
           $("<div/>",{class:"col-md-12"}).append(
             $("<div/>",{class:"task-left"}).append(
               $("<div/>",{class:"task-done"}).append(                
-                $("<input/>",{"type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"}))),
+                $("<input/>",{"type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
+                )
+              ),
             $("<div/>",{class:"task-middle"}).append(
               $("<div/>",{class:"task-edit btn"}).append(
-                $("<i/>",{class:"glyphicon glyphicon-edit"})
-              )
+                $("<i/>",{class:"glyphicon glyphicon-edit"}))
             ),
             $("<div/>",{class:"task-right"}).append(
               $("<div/>",{class:"task-delete btn"}).append(
                 $("<i/>",{class:"glyphicon glyphicon-trash"})
+                )
               )
             )
           )
-        )
       )
     )
   );
