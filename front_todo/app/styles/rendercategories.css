@@ -20,6 +20,7 @@
 /*  overflow-y:hidden;*/
   margin-bottom: 10px;
   margin-left: 10px;
+  padding-top: 10%;
 }
 .glyphicon {
   font-size: x-large;
@@ -34,9 +35,6 @@ a {
   padding-left: 18px;
   margin-top: 1%;
 
-}
-.col-md-3{
-  width: 20%;
 }
 .category-button{
   float: right;
