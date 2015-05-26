@@ -22,14 +22,21 @@
   margin-left: 10px;
   padding-top: 10%;
 }
-.glyphicon {
-  font-size: x-large;
+.glyphicon-category {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
   line-height: 2;
-
-}
-a {
+  font-size: x-large;
   color: #FFFFFF;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 .col-md-3, .col-sm-4, .col-xs-12{
   padding-right: 18px;
   padding-left: 18px;
