@@ -1,31 +1,24 @@
 class TasksController < ApplicationController
 
 	def index		
-    if Task.all 
-    	task = Task.all
-		  render json: task, :except => [:created_at, :updated_at]
-    else
-      render json: {"Mensaje":"No Hay Tareas Que Mostrar"}
-    end
+		if Task.all 
+			task = Task.all
+			render json: task, :except => [:created_at, :updated_at]
+		else
+			render json: {"Mensaje":"No Hay Tareas Que Mostrar"}
+		end
 
 	end
 
 	def create
 		task = Task.new(permit)
+
 		if task.category_id == nil
-			category =	Category.find_by name: 'uncategorized'
-			if category
-				task.category_id = category.id			
-			else
-				category = Category.new
-				category.name = 'uncategorized'
-				category.save
-				task.category_id = category.id
-			end
+			task.category_id = 1			
 		end
 		if task.valid?
 			task.save
-			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
+			render json: task, :except => [ :category_id, :created_at, :updated_at], :include => [:category => {:except =>[:created_at, :updated_at]}]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}			
 		end
@@ -68,8 +61,8 @@ class TasksController < ApplicationController
 	end
 	
 	def destroy		
-    if Task.exists?(params[:id])
-    	Task.find(params[:id]).delete
+		if Task.exists?(params[:id])
+			Task.find(params[:id]).delete
 			render json: {"result":true}
 		else
 			render json: {"result":false, "error":"Mensaje de error"}
@@ -79,6 +72,9 @@ class TasksController < ApplicationController
 	private
 
 	def permit
+		params[:status] = params[:status].nil? ? nil : params[:status].to_i
+		params[:priority] = params[:priority].nil? ? nil : params[:priority].to_i
+		params[:category_id] = params[:category_id].nil? ? nil : params[:category_id].to_i
 		params.permit(:title, :status, :date, :priority, :category_id)
 	end
 end
