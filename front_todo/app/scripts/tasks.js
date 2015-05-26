@@ -1,7 +1,7 @@
 
 var Tasks = function(container, data){
 	url = 'http://localhost:3000/tasks'
-	this.container = container;
+	this.container = container;	
 
 	if (data) {
 		this.init(data);
