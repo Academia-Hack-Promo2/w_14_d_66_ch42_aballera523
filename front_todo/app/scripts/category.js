@@ -37,7 +37,7 @@ Category.prototype.draw = function() {
               $("<div/>",{class:"col-md-12"}).append(
                 $("<button/>",{class:"category-button"}).append(
                   $("<a/>",{href:"#"}).append(
-                    $("<i/>",{class:"glyphicon-category glyphicon-pencil"})
+                    $("<i/>",{class:"glyphicon-category glyphicon-edit"})
                     )
                   ),
                 $("<button/>",{class:"category-button", "data-toggle":"modal", "data-target":".bs-example-modal-sm"}).append(
