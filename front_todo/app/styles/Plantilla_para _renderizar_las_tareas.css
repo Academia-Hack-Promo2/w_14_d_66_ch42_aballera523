@@ -1,5 +1,5 @@
 /*style plantilla de tarea */
-.degradado{
+.task-degradado{
   margin-top: 10px;
   border-radius: 20px 20px 0 0;
   background: #3b5761; 
@@ -12,7 +12,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b5761', endColorstr='#29303d',GradientType=0 ); 
   color: #fff;
 }
-.priority{
+.task-priority{
   margin-top: 15px;
   width: 20px;
   height: 20px;
@@ -25,7 +25,7 @@
 .task-date{
   margin-top: 15px
 }
-.task-content{
+.task-title{
   min-height: 70px;
   margin-top: -10px;
   height: 100px;
@@ -121,4 +121,8 @@ hr {
   background-color: #449d44;
   border-color: #398439;
   font-size: 25px;
+}
+
+hr {
+  width: 75%;
 }

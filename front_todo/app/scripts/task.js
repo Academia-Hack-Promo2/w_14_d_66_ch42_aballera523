@@ -1,7 +1,6 @@
 var Task = function(container, data){
   url = 'http://localhost:3000/tasks'
-  this.container = container;
-  console.log(data);
+  this.container = container;  
 
   if(container) {    
     this.id = container.data('task');
@@ -26,23 +25,44 @@ Task.prototype.init = function(data) {
 
 Task.prototype.draw = function() {
 
-  builder = $("<div/>",{id:'task_'+this.id,class:"col-xs-8 col-sm-5 col-md-3"}).append(
-    $("<div/>",{class:"row task-gradient"}).append(
-      $("<div/>",{class:"row task-header"}).append(
-        $("<div/>",{class:"col-md-3 task-priority"}).html(this.priority),
-        $("<div/>",{class:"col-md-9 task-date"}).html(this.date)),
-
-      $("<div/>",{class:"row task-title"}).html(this.title),
-
-      $("<div/>",{class:"row image"}).append(
-        $("<img/>",{class:"probando", src:"images/task.jpg"})),
-
-      $("<div/>",{class:"row task-category"}).html(this.category)),
-
-    $("<div/>",{class:"row task-footer"}).append(
-      $("<div/>",{class:"col-md-6 task-done"}).html('Done'),
-      $("<div/>",{class:"col-md-3 task-edit"}).html('Update'),
-      $("<div/>",{class:"col-md-3 task-delete"}).html('Delete'))
+  builder = $("<div/>",{id:'task_'+this.id,class:"col-md-3 col-sm-4 col-xs-12"}).append(
+    $("<div/>",{class:"row"}).append(
+      $("<div/>",{class:"col-md-12"}).append(
+        $("<div/>",{class:"task-degradado"}).append(
+          $("<div/>",{class:"row"}).append(
+            $("<div/>",{class:"col-md-3"}).append(
+              $("<div/>",{class:"task-priority"})),
+            $("<div/>",{class:"col-md-9"}).append(
+              $("<div/>",{class:"task-date"}).append(
+                $("<h4/>").html(this.date)))),
+          $("<div/>",{class:"row"}).append(
+            $("<div/>",{class:"col-md-12"}).append(
+              $("<hr/>"),
+              $("<div/>",{class:"task-title"}).html(this.title),
+              $("<hr/>"))),
+          $("<div/>",{class:"row"}).append(
+            $("<div/>",{class:"col-md-12 text-center"}).append(
+              $("<div/>",{class:"task-category"}).append(
+                $("<strong/>").html(this.category))))),
+        $("<div/>",{class:"row"}).append(
+          $("<div/>",{class:"col-md-12"}).append(
+            $("<div/>",{class:"task-left"}).append(
+              $("<div/>",{class:"task-done"}).append(                
+                $("<input/>",{"type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"}))),
+            $("<div/>",{class:"task-middle"}).append(
+              $("<div/>",{class:"task-edit btn"}).append(
+                $("<i/>",{class:"glyphicon glyphicon-edit"})
+              )
+            ),
+            $("<div/>",{class:"task-right"}).append(
+              $("<div/>",{class:"task-delete btn"}).append(
+                $("<i/>",{class:"glyphicon glyphicon-trash"})
+              )
+            )
+          )
+        )
+      )
+    )
   );
   return builder;
 };

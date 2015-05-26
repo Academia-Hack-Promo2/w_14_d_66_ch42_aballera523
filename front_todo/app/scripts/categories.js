@@ -40,7 +40,7 @@ Categories.prototype.getData = function() {
 			self.appendSection();
 		},
 		error: function(xhr){
-			console.log('Error Recibieno Data Categories Del Servidor');
+			console.log('Error Recibiendo Data Categories Del Servidor');
 		}
 	});
 };
