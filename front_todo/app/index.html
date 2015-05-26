@@ -90,49 +90,71 @@
                   Categoria
                 </label>
                 <select class="form-control" id="categories">
-                  <option value="default">Seleccione categoria</option>
-                  <option value="Nueva">Nueva</option>
                 </select>
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="newCatergory">Crear categoria</button>
-              </div>
-              <h4 id="error_category"></h4> 
-              <div class="form-group">
-                <label for="exampleInputType">
-                  Prioridad
-                </label>
-                <select class="form-control" id="priority">
-                  <option value="1">Hight</option>
-                  <option value="2">Medium</option>
-                  <option value="3">Low</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputStatus">
-                  Status
-                </label>
-                <select class="form-control" id="status">
-                  <option value="1">Done</option>
-                  <option value="2">Undone</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputDate">
-                  Fecha
-                </label>
-                <div class='input-group date' id='datetimepicker1'>
-                  <input type='text' class="form-control" id="finish_date"/>
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
+                <br>
+                <button type="button" class="btn btn-default" data-toggle="modal" id="newCatergory" data-target="#smallModal">Nueva categoria</button>
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="smallModal">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                     <div class="modal-header">
+                       <h4>Nueva categoria</h4>
+                     </div>
+                     <div class="modal-body">
+                       <form>
+                         <div class="form-group">
+                           <label for="exampleInputTitle">
+                             Nombre de categoria
+                           </label>
+                           <input type="title" class="form-control" id="categoryName" placeholder="Nombre">
+                           <h4 id="nameError"></h4>
+                         </div>
+                       </form>
+                     </div>
+                     <div class="modal-footer">
+
+                      <button type="button" class="btn btn-primary" id="newCategoryModal">Crear Categoria</button>
+                    </div>
+                  </div>
                 </div>
+              </div> 
+            </div>
+            <h4 id="error_category"></h4> 
+            <div class="form-group">
+              <label for="exampleInputType">
+                Prioridad
+              </label>
+              <select class="form-control" id="priority">
+                <option value="0">Low</option>
+                <option value="1">Medium</option>
+                <option value="2">Hight</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputStatus">
+                Status
+              </label>
+              <select class="form-control" id="status">
+                <option value="0">Undone</option>
+                <option value="1">Done</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputDate">
+                Fecha
+              </label>
+              <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" id="finish_date"/>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-          <button type="button" class="btn btn-primary" id="taskNew">Guardar Tarea</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+        <button type="button" class="btn btn-primary" id="taskNew">Guardar Tarea</button>
       </div>
     </div>
   </div>
@@ -143,9 +165,11 @@
 
       <!-- <div class="container categoriesSection"></div> -->
 
+
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
+
 
 
  <!-- <div class="container tasksSection"></div>
@@ -157,6 +181,7 @@
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <script src="bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+
 
   <!-- endbower -->
   <!-- endbuild -->
@@ -197,7 +222,7 @@
   <script src="scripts/tasks.js"></script>
   <script src="scripts/category.js"></script>
   <script src="scripts/categories.js"></script>
-  
+
   <!-- endbuild -->
 
 </body>
