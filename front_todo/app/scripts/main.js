@@ -69,3 +69,9 @@ $(function(){
 		
 	});
 
+////////////////////////////////////
+  // Everything to handle TimePicker
+$('#datetimepicker1').datetimepicker({
+      format:'YYYY-MM-DD'
+}); // Cierra DateTimePicker
+////////////////////////////////////
