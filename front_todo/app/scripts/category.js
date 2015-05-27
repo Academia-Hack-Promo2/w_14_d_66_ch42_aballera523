@@ -16,7 +16,12 @@ var Category = function(container, data){
 
 Category.prototype.init = function(data) {
   this.id = data.id;
-  this.name = data.name;  
+  if (data.name == "uncategorized") {
+    this.name = "Sin categoria"
+  } else {
+    this.name = data.name
+  };
+   
 };
 
 Category.prototype.draw = function() {
@@ -26,15 +31,26 @@ Category.prototype.draw = function() {
         $("<div/>",{class:"col-md-12"}).append(
           $("<div/>",{class:"degradado text-center"}).append(
             $("<div/>",{class:"row"}).append(
-              $("<div/>",{class:"col-md-12  task-category"}).html(this.name)),
+              $("<div/>",{class:"col-md-12  task-category"}).html(this.name)
+              ),
             $("<div/>",{class:"row"}).append(
               $("<div/>",{class:"col-md-12"}).append(
                 $("<button/>",{class:"category-button"}).append(
                   $("<a/>",{href:"#"}).append(
-                    $("<i/>",{class:"glyphicon-category glyphicon-refresh"}))),
-                $("<button/>",{class:"category-button"}).append(
+                    $("<i/>",{class:"glyphicon-category glyphicon-edit"})
+                    )
+                  ),
+                $("<button/>",{class:"category-button", "data-toggle":"modal", "data-target":".bs-example-modal-sm"}).append(
                   $("<a/>",{href:"#"}).append(
-                    $("<i/>",{class:"glyphicon-category glyphicon-trash"})))))))));
+                    $("<i/>",{class:"glyphicon-category glyphicon-trash"})
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
   return builder;
 };
 
