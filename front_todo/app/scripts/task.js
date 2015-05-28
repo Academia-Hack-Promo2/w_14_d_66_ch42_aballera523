@@ -22,7 +22,7 @@ Task.prototype.init = function(data) {
   this.status = data.status;
   this.priority = data.priority;
   this.date = data.date;
-  this.category = data.category.name;
+  this.category = data.category.name;  
 };
 
 Task.prototype.draw = function() {
@@ -102,3 +102,23 @@ Task.prototype.appendSection = function() {
     console.log('Error Al Dibujar Task En El Contenedor');
   }
 };
+
+Task.prototype.functions = function(first_argument) {
+  // body...
+};
+
+Task.prototype.deleteTask = function(){
+   $.ajax({
+     type: 'delete',
+     data: {_method: 'delete'},
+     url: 'http://localhost:3000/tasks/'+this.id,
+     success: function(data){
+       var header = $('#header');
+       var container = $('#cat-cont');
+       tasks = new Task(container,header);
+     },
+     error: function(){
+       console.log('error al eliminar')
+     }
+   });
+}

@@ -1,7 +1,16 @@
 
 var Tasks = function(container, data){
 	var url = 'http://localhost:3000/tasks';
-	this.container = container;	
+	this.container = container;
+	this.functions = [];
+
+	this.functions.push(function(){
+		return($('.task-right').click(function(){
+			var id = {'id':$(this).attr('id'),'Task':''};
+			task = new Task(id);
+			task.deleteTask();
+		}))
+	});
 
 	if (data) {
 		this.init(data);
@@ -47,7 +56,8 @@ Tasks.prototype.getData = function() {
 
 Tasks.prototype.appendSection = function() {
 	if (this.container) {
-		this.container.append(this.draw());		
+		this.container.append(this.draw());
+		this.functions[0]();	
 	} else {
 		console.log('Error Al Dibujar Tasks En El Contenedor');
 	}
