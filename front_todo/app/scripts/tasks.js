@@ -1,6 +1,6 @@
 
 var Tasks = function(container, data){
-	url = 'http://localhost:3000/tasks'
+	var url = 'http://localhost:3000/tasks';
 	this.container = container;	
 
 	if (data) {
@@ -9,7 +9,7 @@ var Tasks = function(container, data){
 	} else {
 		this.getData();
 	}
-}
+};
 
 Tasks.prototype.init = function(data) {
 	var task;
@@ -22,7 +22,7 @@ Tasks.prototype.init = function(data) {
 };
 
 Tasks.prototype.draw = function() {
-  var builder = $("<div/>",{class:'row'});
+  var builder = $('<div/>',{class:'row'});
 
   for(var i = 0; i < this.tasks.length; i++) {
     builder.append(this.tasks[i].draw());

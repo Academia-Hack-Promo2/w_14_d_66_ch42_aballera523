@@ -1,6 +1,6 @@
 
 var Categories = function(container, data){
-	url = 'http://localhost:3000/categories'
+	url = 'http://localhost:3000/categories';
 	this.container = container;
 
 	if (data) {
@@ -9,9 +9,10 @@ var Categories = function(container, data){
 	} else {
 		this.getData();
 	}
-}
+};
 
 Categories.prototype.init = function(data) {
+	'use strict';
 	var category;
 	this.categories = [];
 
@@ -22,7 +23,8 @@ Categories.prototype.init = function(data) {
 };
 
 Categories.prototype.draw = function() {
-  var builder = $("<div/>",{class:'row'});
+	'use strict';
+  var builder = $('<div/>',{class:'row'});
 
   for(var i = 0; i < this.categories.length; i++) {
     builder.append(this.categories[i].draw());
@@ -31,6 +33,7 @@ Categories.prototype.draw = function() {
 };
 
 Categories.prototype.getData = function() {
+	'use strict';
 	var self = this;
 	$.ajax({
 		type: 'get',
