@@ -65,7 +65,7 @@
 .task-delete:hover{
   background-color: #c62828;
 }
-.glyphicon {
+.glyphicon-edit, .glyphicon-trash  {
   font-size: x-large;
   margin-top: 5px;
   color: #FFFFFF;
