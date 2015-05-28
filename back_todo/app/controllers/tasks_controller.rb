@@ -61,11 +61,12 @@ class TasksController < ApplicationController
 	
 	def destroy		
 		if Task.exists?(params[:id])
-			Task.find(params[:id]).delete
-			render json: {"result":true}
+			task = Task.find(params[:id])
 		else
 			render json: {"result":false, "error":"Mensaje de error"}
 		end
+		task.delete
+		render json: {"result":true}
 	end
 
 	private
