@@ -5,207 +5,112 @@
   <title>CheckLists</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="shortcut icon" href="images/app.png">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css(.) styles/vendor.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" />
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="shortcut icon" href="/app.png">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/tasks.css">
-  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/styleintro.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/reset.css"> 
+  <link rel="stylesheet" href="styles/style.css">
+
 </head>
-<body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-      <![endif]-->
-      <header>
-        <nav class="navbar navbar-check">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html"><i class="glyphicon glyphicon-check"></i></a>
-          </div>
+  <body>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Home</a></li>
-              <li><a href="tasks.html">Tasks</a></li>
-              <li><a href="categories.html">Categories</a></li>
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-              </form>
-            </ul>
 
-          </div>
+     <header class="cd-header" data-type="slider-item">
+        <div align="center" class="fond">  
+          <div class="first_circle"></div>
+            <div class="second_div">
+              <div class="img_div"><img src="images/Logo-04.png">
+              <div id="button">
+                <a class="btn btn-intro" href="tasks.html" role="button">On-line Demo</a> 
+              </div>  
+              </div>
+            </div>
         </div>
-      </nav>      
       </header>
-
-
-
-
-      <section class="container">
-        <div class="row" id="mainbox">
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="box box-btn" id="modal_botton" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i></div>
-          </div>
+      
+      <section class="cd-fixed-background img-1" data-type="slider-item">
+        <div class="cd-content">
+          <h2>Organization</h2>
+          <p>An organized way to start the day's work.</p>
         </div>
       </section>
-      
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" >Nueva Tarea</h4>
-            </div>
-            <div class="modal-body">
-              <form> <div class="form-group">
-                <label for="exampleInputTitle">
-                  Titulo
-                </label>
-                <input type="title" class="form-control" id="title" placeholder="Titulo">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputCategory">
-                  Categoria
-                </label>
-                <select class="form-control" id="categories">
-                </select>
-                <br>
-                <button type="button" class="btn btn-default" data-toggle="modal" id="newCatergory" data-target="#smallModal">Nueva categoria</button>
-                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="smallModal">
-                  <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                     <div class="modal-header">
-                       <h4>Nueva categoria</h4>
-                     </div>
-                     <div class="modal-body">
-                       <form>
-                         <div class="form-group">
-                           <label for="exampleInputTitle">
-                             Nombre de categoria
-                           </label>
-                           <input type="title" class="form-control" id="categoryName" placeholder="Nombre">
-                           <h4 id="nameError"></h4>
-                         </div>
-                       </form>
-                     </div>
-                     <div class="modal-footer">
 
-                      <button type="button" class="btn btn-primary" id="newCategoryModal">Crear Categoria</button>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-            </div>
-            <h4 id="error_category"></h4> 
-            <div class="form-group">
-              <label for="exampleInputType">
-                Prioridad
-              </label>
-              <select class="form-control" id="priority">
-                <option value="0">Low</option>
-                <option value="1">Medium</option>
-                <option value="2">Hight</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputStatus">
-                Status
-              </label>
-              <select class="form-control" id="status">
-                <option value="0">Undone</option>
-                <option value="1">Done</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputDate">
-                Fecha
-              </label>
-              <div class='input-group date' id='datetimepicker1'>
-                <input type='text' class="form-control" id="finish_date"/>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-          </form>
+      <section class="cd-fixed-background img-2" data-type="slider-item">
+        <div class="cd-content light-background">
+          <h2>Innovation</h2>
+          <p>When creating your daily tasks, you can even classify priority:</p>
+            <li>Low</li>
+            <li>Medium</li>
+            <li>High.</li>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-        <button type="button" class="btn btn-primary" id="taskNew">Guardar Tarea</button>
-      </div>
-    </div>
-  </div>
+      </section>
+
+      <section class="cd-fixed-background img-3" data-type="slider-item">
+        <div class="cd-content">
+          <h2>Search</h2>
+          <p>Look for your tasks anywhere, anytime.</p>
+        </div>
+      </section>
+
+      <section class="cd-fixed-background img-4" data-type="slider-item">
+        <div class="cd-content">
+          <h2>Classification</h2>
+          <p>Your tasks will be arranged by category and can edit or delete them whenever you want.</p>
+        </div>
+      </section>
+
+      <nav>
+        <ul class="cd-vertical-nav">
+          <li><a href="#0" class="cd-prev inactive">Next</a></li>
+          <li><a href="#0" class="cd-next">Prev</a></li>
+        </ul> 
+      </nav> 
 
 
-  <div class="container tasksSection"></div> 
 
 
-      <!-- <div class="container categoriesSection"></div> -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
 
-  <!-- build:js(.) scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X');ga('send','pageview');
-  </script>
-
-  <!-- build:js(.) scripts/plugins.js -->
-  <script src="bower_components/bootstrap/js/affix.js"></script>
-  <script src="bower_components/bootstrap/js/alert.js"></script>
-  <script src="bower_components/bootstrap/js/dropdown.js"></script>
-  <script src="bower_components/bootstrap/js/tooltip.js"></script>
-  <script src="bower_components/bootstrap/js/modal.js"></script>
-  <script src="bower_components/bootstrap/js/transition.js"></script>
-  <script src="bower_components/bootstrap/js/button.js"></script>
-  <script src="bower_components/bootstrap/js/popover.js"></script>
-  <script src="bower_components/bootstrap/js/carousel.js"></script>
-  <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-  <script src="bower_components/bootstrap/js/collapse.js"></script>
-  <script src="bower_components/bootstrap/js/tab.js"></script>
-  <!-- endbuild -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/bootstrap/js/affix.js"></script>
+    <script src="bower_components/bootstrap/js/alert.js"></script>
+    <script src="bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="bower_components/bootstrap/js/modal.js"></script>
+    <script src="bower_components/bootstrap/js/transition.js"></script>
+    <script src="bower_components/bootstrap/js/button.js"></script>
+    <script src="bower_components/bootstrap/js/popover.js"></script>
+    <script src="bower_components/bootstrap/js/carousel.js"></script>
+    <script src="bower_components/bootstrap/js/scrollspy.js"></script>
+    <script src="bower_components/bootstrap/js/collapse.js"></script>
+    <script src="bower_components/bootstrap/js/tab.js"></script>
 
 
-  <!-- build:js({app,.tmp}) scripts/main.js -->
-  <script src="scripts/main.js"></script>
-  <!-- endbuild -->
-  <!-- <link rel="stylesheet" href="styles/index.css">-->
 
-  <!-- build:js({app,.tmp}) scripts/main.js -->
-  <script src="scripts/task.js"></script>
-  <script src="scripts/tasks.js"></script>
-  <script src="scripts/category.js"></script>
-  <script src="scripts/categories.js"></script>
-
-  <!-- endbuild -->
+    <!-- scripts/main.js -->
+    <script src="scripts/Plantilla_para _renderizar_las_tareas.js"></script>
+    <script src="scripts/modernizr.js"></script>
+    <script src="scripts/home.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/task.js"></script>
+    <script src="scripts/tasks.js"></script>
+    <script src="scripts/category.js"></script>
+    <script src="scripts/categories.js"></script>
 
 </body>
 </html>
+

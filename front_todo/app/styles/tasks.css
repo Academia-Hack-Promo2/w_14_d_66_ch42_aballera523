@@ -22,6 +22,9 @@
   margin-right: auto;
   box-shadow: 0 0 5px 2px #2A323F;
 }
+.task-content{
+  height: 100px;
+}
 .task-date{
   margin-top: 15px
 }
@@ -43,9 +46,6 @@
   height: 50px;
   width: 100%;
   border-radius: 0 0 0 20px;
-}
-.task-done:hover{
-  background-color: #449d44;
 }
 .task-edit{
   background-color: #0DD6C7;
@@ -115,6 +115,7 @@ hr {
   background-color: #c9302c;
   border-color: #ac2925;
   font-size: 25px;
+  margin-right: 5px;
 }
 .btn-success{
   color: #fff;
@@ -125,4 +126,17 @@ hr {
 
 hr {
   width: 75%;
+}
+
+.glyphicon-remove{
+  font-size: 25px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.task-undone{
+  background-color: #c9302c;
+  height: 50px;
+  width: 100%;
+  border-radius: 0 0 0 20px;
 }
