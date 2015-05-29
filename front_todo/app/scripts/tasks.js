@@ -56,8 +56,8 @@ Tasks.prototype.getData = function() {
 
 Tasks.prototype.appendSection = function() {
 	if (this.container) {
-		this.container.append(this.draw());
-		this.functions[0]();	
+		this.container.append(this.draw());		
+		$('.check').bootstrapToggle();
 	} else {
 		console.log('Error Al Dibujar Tasks En El Contenedor');
 	}
