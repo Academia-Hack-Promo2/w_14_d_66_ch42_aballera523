@@ -73,8 +73,31 @@ $(function(){
 
 	$(document).on("click",'.task-middle',function(){
 		console.log(this.id);
-
+		$('#my-modal').show( );
 	});
+
+		$(document).on("click",'.task-delete',function(){
+			alert('q funcione!!!!');
+		});
+		$(document).on("click",'.delete-category',function(){
+			var id = this.id;
+			$.ajax({
+				url:'http://localhost:3000/categories/'+this.id,
+				type:'post',
+				data: {_method: 'delete'},
+				success: function(data){
+					$(document).ready(function(){
+						$('#category_'+id).remove();
+					})
+					
+				},
+				error: function(data){
+					console.log(data)
+				}
+
+			});
+		});
+
 
 	});
 

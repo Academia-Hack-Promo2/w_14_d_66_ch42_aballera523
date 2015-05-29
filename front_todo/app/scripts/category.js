@@ -42,7 +42,7 @@ Category.prototype.draw = function() {
                     $("<i/>",{class:"glyphicon-category glyphicon-edit"})
                     )
                   ),
-                $("<button/>",{class:"category-button", "data-toggle":"modal", "data-target":".bs-example-modal-sm"}).append(
+                $("<button/>",{class:"category-button delete-category", id:this.id}).append(
                   $("<a/>",{href:"#"}).append(
                     $("<i/>",{class:"glyphicon-category glyphicon-trash"})
                     )
