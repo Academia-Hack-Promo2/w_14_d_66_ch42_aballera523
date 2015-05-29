@@ -58,6 +58,10 @@ $(function(){
 				}
 				);
 			});
-		
+		//resuelve el super peo de los botones 
+	$(document).on("click",'.task-delete',function(){
+		alert('q funcione!!!!');
+	});
+
 	});
 
