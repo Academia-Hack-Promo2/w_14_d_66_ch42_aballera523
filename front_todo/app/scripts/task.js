@@ -59,8 +59,7 @@ Task.prototype.draw = function() {
           $("<div/>",{class:"col-md-12"}).append(
             $("<div/>",{class:"task-left"}).append(
               $("<div/>",{class:"task-done"}).append(                
-                $("<input/>",{"type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
-
+                $("<input/>",{class:'check', type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
                 )
               ),
             $("<div/>",{class:"task-middle"}).append(
@@ -69,7 +68,7 @@ Task.prototype.draw = function() {
                 )
               ),
             $("<div/>",{class:"task-right"}).append(
-              $("<div/>",{class:"task-delete btn"}).append(
+              $("<div/>",{class:"task-delete", id:"taskDelete"}).append(
                 $("<i/>",{class:"glyphicon glyphicon-trash"})
                 )
               )
@@ -98,7 +97,7 @@ Task.prototype.getData = function() {
 
 Task.prototype.appendSection = function() {
   if (this.container) {
-    this.container.append(this.draw());
+    this.container.append(this.draw());  
   } else {
     console.log('Error Al Dibujar Task En El Contenedor');
   }
