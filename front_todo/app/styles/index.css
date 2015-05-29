@@ -37,3 +37,8 @@ header{
   background-color:  #2A323F;
   color: #0DD6C7;
 }
+.next{
+  border-radius: 20px 20px 20px 20px;
+  width: 200px;
+  background-color: #0dd6c7;
+}
