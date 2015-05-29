@@ -59,15 +59,28 @@ $(function(){
 				);
 			});
 		//resuelve el super peo de los botones 
-	$(document).on("click",'.task-delete',function(){
-		alert('q funcione!!!!');
+	$(document).on("click",'.task-right',function(){
+		var id = this.id;
+		 $.ajax({
+		 		url:'http://localhost:3000/tasks/'+this.id,
+		 		type:'post',
+		 		data: {_method: 'delete'},
+		 		success: function(data){
+		 			$('#task_'+id).remove();
+		 		}
+		 });
+	});
+
+	$(document).on("click",'.task-middle',function(){
+		console.log(this.id);
+
 	});
 
 	});
 
 ////////////////////////////////////
   // Everything to handle TimePicker
-$('#datetimepicker1').datetimepicker({
-      format:'YYYY-MM-DD'
-}); // Cierra DateTimePicker
+// $('#datetimepicker1').datetimepicker({
+//       format:'YYYY-MM-DD'
+// }); // Cierra DateTimePicker
 ////////////////////////////////////

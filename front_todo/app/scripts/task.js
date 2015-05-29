@@ -62,13 +62,13 @@ Task.prototype.draw = function() {
                 $("<input/>",{class:'check', type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
                 )
               ),
-            $("<div/>",{class:"task-middle"}).append(
+            $("<div/>",{class:"task-middle", id:this.id}).append(
               $("<div/>",{class:"task-edit btn"}).append(
                 $("<i/>",{class:"glyphicon glyphicon-edit"})
                 )
               ),
-            $("<div/>",{class:"task-right"}).append(
-              $("<div/>",{class:"task-delete", id:"taskDelete"}).append(
+            $("<div/>",{class:"task-right", id:this.id}).append(
+              $("<div/>",{class:"task-delete btn"}).append(
                 $("<i/>",{class:"glyphicon glyphicon-trash"})
                 )
               )
