@@ -11,7 +11,6 @@
   background: linear-gradient(to bottom,  #3b5761 0%,#29303d 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b5761', endColorstr='#29303d',GradientType=0 ); 
   color: #fff;
-  height: 150px;
 }
 .task-priority{
   margin-top: 15px;
@@ -48,9 +47,6 @@
   width: 100%;
   border-radius: 0 0 0 20px;
 }
-.task-done:hover{
-  background-color: #449d44;
-}
 .task-edit{
   background-color: #0DD6C7;
   height: 50px; 
@@ -69,7 +65,7 @@
 .task-delete:hover{
   background-color: #c62828;
 }
-.glyphicon {
+.glyphicon-edit, .glyphicon-trash  {
   font-size: x-large;
   margin-top: 5px;
   color: #FFFFFF;
@@ -118,7 +114,8 @@ hr {
   color: #fff;
   background-color: #c9302c;
   border-color: #ac2925;
-  font-size: 25px;
+  font-size: 18px;
+  margin-right: 5px;
 }
 .btn-success{
   color: #fff;
@@ -129,4 +126,17 @@ hr {
 
 hr {
   width: 75%;
+}
+
+.glyphicon-remove{
+  font-size: 25px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.task-undone{
+  background-color: #c9302c;
+  height: 50px;
+  width: 100%;
+  border-radius: 0 0 0 20px;
 }

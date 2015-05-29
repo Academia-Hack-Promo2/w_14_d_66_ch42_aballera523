@@ -1,5 +1,6 @@
 var Category = function(container, data){
-  url = 'http://localhost:3000/categories'
+  'use strict';
+  url = 'http://localhost:3000/categories';
   this.container = container;
 
   if(container) {    
@@ -12,15 +13,16 @@ var Category = function(container, data){
   } else {
     this.getData();
   }
-}
+};
 
 Category.prototype.init = function(data) {
+  'use strict';
   this.id = data.id;
-  if (data.name == "uncategorized") {
-    this.name = "Sin categoria"
+  if (data.name === "uncategorized") {
+    this.name = "Sin categoria";
   } else {
-    this.name = data.name
-  };
+    this.name = data.name;
+  }
    
 };
 
@@ -55,6 +57,7 @@ Category.prototype.draw = function() {
 };
 
 Category.prototype.getData = function() {
+  'use strict';
   var self = this;
   $.ajax({
     type: 'get',
@@ -70,6 +73,7 @@ Category.prototype.getData = function() {
 };
 
 Category.prototype.appendSection = function() {
+  'use strict';
   if (this.container) {
     this.container.append(this.draw());
   } else {

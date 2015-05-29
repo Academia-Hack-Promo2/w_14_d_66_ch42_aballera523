@@ -1,7 +1,16 @@
 
 var Tasks = function(container, data){
-	url = 'http://localhost:3000/tasks'
-	this.container = container;	
+	var url = 'http://localhost:3000/tasks';
+	this.container = container;
+	this.functions = [];
+
+	this.functions.push(function(){
+		return($('.task-right').click(function(){
+			var id = {'id':$(this).attr('id'),'Task':''};
+			task = new Task(id);
+			task.deleteTask();
+		}))
+	});
 
 	if (data) {
 		this.init(data);
@@ -9,7 +18,7 @@ var Tasks = function(container, data){
 	} else {
 		this.getData();
 	}
-}
+};
 
 Tasks.prototype.init = function(data) {
 	var task;
@@ -22,7 +31,7 @@ Tasks.prototype.init = function(data) {
 };
 
 Tasks.prototype.draw = function() {
-  var builder = $("<div/>",{class:'row'});
+  var builder = $('<div/>',{class:'row'});
 
   for(var i = 0; i < this.tasks.length; i++) {
     builder.append(this.tasks[i].draw());
@@ -47,7 +56,8 @@ Tasks.prototype.getData = function() {
 
 Tasks.prototype.appendSection = function() {
 	if (this.container) {
-		this.container.append(this.draw());		
+		this.container.append(this.draw());
+		this.functions[0]();	
 	} else {
 		console.log('Error Al Dibujar Tasks En El Contenedor');
 	}

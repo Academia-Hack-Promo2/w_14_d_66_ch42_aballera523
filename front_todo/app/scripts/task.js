@@ -1,5 +1,6 @@
 var Task = function(container, data){
-  url = 'http://localhost:3000/tasks'
+  'use strict';
+  url = 'http://localhost:3000/tasks';
   this.container = container;  
 
   if(container) {    
@@ -12,20 +13,20 @@ var Task = function(container, data){
   } else {
     this.getData();
   }
-}
+};
 
 Task.prototype.init = function(data) {
+  'use strict';
   this.id = data.id;
   this.title = data.title;
   this.status = data.status;
   this.priority = data.priority;
   this.date = data.date;
-  this.category = data.category.name;
+  this.category = data.category.name;  
 };
 
 Task.prototype.draw = function() {
-
-  builder = $("<div/>",{id:'task_'+this.id,class:"col-md-3 col-sm-4 col-xs-12"}).append(
+  builder = $('<div/>',{id:'task_'+this.id,class:'col-md-3 col-sm-4 col-xs-12'}).append(
     $("<div/>",{class:"row"}).append(
       $("<div/>",{class:"col-md-12"}).append(
         $("<div/>",{class:"task-degradado"}).append(
@@ -58,13 +59,15 @@ Task.prototype.draw = function() {
           $("<div/>",{class:"col-md-12"}).append(
             $("<div/>",{class:"task-left"}).append(
               $("<div/>",{class:"task-done"}).append(                
-                $("<input/>",{"id":"check","type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
+                $("<input/>",{"type":"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
+
                 )
               ),
             $("<div/>",{class:"task-middle"}).append(
               $("<div/>",{class:"task-edit btn"}).append(
-                $("<i/>",{class:"glyphicon glyphicon-edit"}))
-            ),
+                $("<i/>",{class:"glyphicon glyphicon-edit"})
+                )
+              ),
             $("<div/>",{class:"task-right"}).append(
               $("<div/>",{class:"task-delete btn"}).append(
                 $("<i/>",{class:"glyphicon glyphicon-trash"})
@@ -100,3 +103,23 @@ Task.prototype.appendSection = function() {
     console.log('Error Al Dibujar Task En El Contenedor');
   }
 };
+
+Task.prototype.functions = function(first_argument) {
+  // body...
+};
+
+Task.prototype.deleteTask = function(){
+   $.ajax({
+     type: 'delete',
+     data: {_method: 'delete'},
+     url: 'http://localhost:3000/tasks/'+this.id,
+     success: function(data){
+       var header = $('#header');
+       var container = $('#cat-cont');
+       tasks = new Task(container,header);
+     },
+     error: function(){
+       console.log('error al eliminar')
+     }
+   });
+}
