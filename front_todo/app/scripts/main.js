@@ -28,31 +28,45 @@ $(function(){
       }
     });
 	};
+	var categorysTask = function(){
+		$.get('http://localhost:3000/categories', function(data){
+			for (var i = 0; i <= data.length-1; i++) {
+				$('#categories').append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+			}
+		});
+	}
+	var	editTask = function(id, edit){
+		$.ajax({
+		 		url:'http://localhost:3000/tasks/'+id,
+		 		type:'put',
+		 		data: edit,
+		 		success: function(data){	 			
+		 		}
+		 });
+	}
 	var newTask = function(taskTitle, taskStatus, taskPriority, taskDate, taskCategory){
 		$.post('http://localhost:3000/tasks',
 				{
 					title: taskTitle,
-					status: taskStatus,
+					status: 0,
 					priority: taskPriority,
 					date: taskDate,
 					category_id: taskCategory
 				},
 				function(data, status){
 					console.log('Data: ' + data + '\nStatus: ' + status);
+
 				});
 	};
 	$('#modal_botton').click(function(){
-		$.get('http://localhost:3000/categories', function(data){
-			for (var i = 0; i <= data.length-1; i++) {
-				$('#categories').append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
-			}
-		});
+		$('#newCatergory').show();
+		categorysTask();
 			$('#newCategoryModal').click(function(){				 
 				newCatergory($('#categoryName').val());
 			});
 			$('#taskNew').click(function(){
-				newTask($('#title').val(), parseInt($('select#status').val()), parseInt($('select#priority').val()), 
-					$('#finish_date').val(), parseInt($('select#categories').val()));
+				newTask($('#title').val(), $('select#priority').val(), 
+					$('#finish_date').val(), $('select#categories').val());
 				$('#myModal').modal('toggle');
 			
 				}
@@ -72,15 +86,29 @@ $(function(){
 	});
 
 	$(document).on("click",'.task-middle',function(){
-		console.log(this.id);
-		$('#my-modal').show( );
+		var id = this.id;
+		$('#newCatergory').hide();
+		$('#myModal').modal('show');
+		categorysTask();
+		$('#taskNew').click(function(){
+			var data = {
+					 			title: $('#title').val(),
+								status: 0,
+								priority: $('select#priority').val(),
+								date: $('#finish_date').val(),
+								category_id: $('select#categories').val()	}
+			
+			editTask(id, data);
+			$('#myModal').modal('toggle');
+			
+			console.log(id);
+			 
+		});
+
 	});
 
-		$(document).on("click",'.task-delete',function(){
-			alert('q funcione!!!!');
-		});
 		$(document).on("click",'.delete-category',function(){
-			var id = this.id;
+			id = this.id;
 			$.ajax({
 				url:'http://localhost:3000/categories/'+this.id,
 				type:'post',
@@ -93,6 +121,7 @@ $(function(){
 				},
 				error: function(data){
 					console.log(data)
+					
 				}
 
 			});

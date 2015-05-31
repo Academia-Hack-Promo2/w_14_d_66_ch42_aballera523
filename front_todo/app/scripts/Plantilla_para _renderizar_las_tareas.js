@@ -1,4 +1,5 @@
-  $(function() {
-  	'use strict';
-    $('#toggle-one').bootstrapToggle();
-  });
+
+
+$("undone-done").click(function(){
+   $("undone-done").addClass("task-undone");
+});
