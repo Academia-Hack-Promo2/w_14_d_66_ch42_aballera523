@@ -48,7 +48,7 @@ $(function(){
 		 		}
 		 });
 	}
-	var newTask = function(taskTitle, taskStatus, taskPriority, taskDate, taskCategory){
+	var newTask = function(taskTitle, taskPriority, taskDate, taskCategory){
 		$.post('http://localhost:3000/tasks',
 				{
 					title: taskTitle,
@@ -59,6 +59,9 @@ $(function(){
 				},
 				function(data, status){
 					console.log('Data: ' + data + '\nStatus: ' + status);
+					var newTask = new Task(null, data);
+					$('#allTasks').append(newTask.draw());
+					$('.check').bootstrapToggle();
 
 				});
 	};
@@ -109,6 +112,9 @@ $(function(){
 			 
 		});
 
+	});
+	$(document).on("click",".task-left",function(){
+		console.log('aqui voy '+this.id);
 	});
 
 		$(document).on("click",'.delete-category',function(){

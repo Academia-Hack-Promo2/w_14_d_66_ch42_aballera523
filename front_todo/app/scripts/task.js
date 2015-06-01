@@ -57,9 +57,9 @@ Task.prototype.draw = function() {
           ),
         $("<div/>",{class:"row"}).append(
           $("<div/>",{class:"col-md-12"}).append(
-            $("<div/>",{class:"task-left"}).append(
+            $("<div/>",{class:"task-left", id:'status_'+this.id}).append(
               $("<div/>",{class:"task-done"}).append(                
-                $("<input/>",{class:'check',id:"status_"+this.id, type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
+                $("<input/>",{class:'check', type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
                 )
               ),
             $("<div/>",{class:"task-middle", id:this.id}).append(
