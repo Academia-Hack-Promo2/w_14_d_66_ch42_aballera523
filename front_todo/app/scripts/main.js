@@ -35,12 +35,16 @@ $(function(){
 			}
 		});
 	}
-	var	editTask = function(id, edit){
+	var	editTask = function(id, edit, query){
 		$.ajax({
 		 		url:'http://localhost:3000/tasks/'+id,
-		 		type:'put',
+		 		type:query,
 		 		data: edit,
-		 		success: function(data){	 			
+		 		success: function(data){	
+		 			console.log(data.date);
+		 			$('#date_'+id).html(data.date); 
+		 			$('#title_'+id).html(data.title);
+		 			$('#category_'+id).html(data.category.name);			
 		 		}
 		 });
 	}
@@ -98,7 +102,7 @@ $(function(){
 								date: $('#finish_date').val(),
 								category_id: $('select#categories').val()	}
 			
-			editTask(id, data);
+			editTask(id, data, "put");
 			$('#myModal').modal('toggle');
 			
 			console.log(id);

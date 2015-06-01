@@ -36,21 +36,21 @@ Task.prototype.draw = function() {
               ),
             $("<div/>",{class:"col-md-9"}).append(
               $("<div/>",{class:"task-date"}).append(
-                $("<h4/>").html(this.date)
+                $("<h4/>",{id:"date_"+this.id}).html(this.date)
                 )
               )
             ),
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-12"}).append(
               $("<hr/>"),
-              $("<div/>",{class:"task-title"}).html(this.title),
+              $("<div/>",{class:"task-title", id:"title_"+this.id}).html(this.title),
               $("<hr/>")
               )
             ),
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-12 text-center"}).append(
               $("<div/>",{class:"task-category"}).append(
-                $("<strong/>").html(this.category)
+                $("<strong/>",{id:"category_"+this.id}).html(this.category)
                 )
               )
             )
@@ -59,7 +59,7 @@ Task.prototype.draw = function() {
           $("<div/>",{class:"col-md-12"}).append(
             $("<div/>",{class:"task-left"}).append(
               $("<div/>",{class:"task-done"}).append(                
-                $("<input/>",{class:'check', type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
+                $("<input/>",{class:'check',id:"status_"+this.id, type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
                 )
               ),
             $("<div/>",{class:"task-middle", id:this.id}).append(

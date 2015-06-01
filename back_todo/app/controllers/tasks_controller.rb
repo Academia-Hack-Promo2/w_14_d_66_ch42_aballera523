@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 		end
 		if task.valid?
 			task.save
-			render json: task, :except => [ :category_id, :created_at, :updated_at], :include => [:category => {:except =>[:created_at, :updated_at]}]
+			render json: task, :except => [ :category_id, :created_at, :updated_at], :include	 => [:category => {:except =>[:created_at, :updated_at]}]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}			
 		end
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
 	def update		
 		if Task.exists?(params[:id])
 			task = Task.update(params[:id], permit)
-			render json: task, :except => [:title, :status, :priority, :date, :category_id, :created_at, :updated_at]
+			render json: task, :include => [:category => {:except =>[:created_at, :updated_at]}], :except => [ :category_id, :created_at, :updated_at]
 		else
 			render json: {"id":nil, "error":"Mensaje de error "}
 		end
