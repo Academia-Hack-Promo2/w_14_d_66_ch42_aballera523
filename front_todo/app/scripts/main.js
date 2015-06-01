@@ -48,16 +48,20 @@ $(function(){
 			}
 		});
 	}
-	var	editTask = function(id, edit){
+	var	editTask = function(id, edit, query){
 		$.ajax({
 		 		url:'http://localhost:3000/tasks/'+id,
-		 		type:'put',
+		 		type:query,
 		 		data: edit,
-		 		success: function(data){	 			
+		 		success: function(data){	
+		 			console.log(data.date);
+		 			$('#date_'+id).html(data.date); 
+		 			$('#title_'+id).html(data.title);
+		 			$('#category_'+id).html(data.category.name);			
 		 		}
 		 });
 	}
-	var newTask = function(taskTitle, taskStatus, taskPriority, taskDate, taskCategory){
+	var newTask = function(taskTitle, taskPriority, taskDate, taskCategory){
 		$.post('http://localhost:3000/tasks',
 				{
 					title: taskTitle,
@@ -68,6 +72,9 @@ $(function(){
 				},
 				function(data, status){
 					console.log('Data: ' + data + '\nStatus: ' + status);
+					var newTask = new Task(null, data);
+					$('#allTasks').append(newTask.draw());
+					$('.check').bootstrapToggle();
 
 				});
 	};
@@ -111,13 +118,16 @@ $(function(){
 								date: $('#finish_date').val(),
 								category_id: $('select#categories').val()	}
 			
-			editTask(id, data);
+			editTask(id, data, "put");
 			$('#myModal').modal('toggle');
 			$("input").empty()
 			console.log(id);
 			 
 		});
 
+	});
+	$(document).on("click",".task-left",function(){
+		console.log('aqui voy '+this.id);
 	});
 
 		$(document).on("click",'.category-right',function(){

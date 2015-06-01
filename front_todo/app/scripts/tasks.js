@@ -2,15 +2,7 @@
 var Tasks = function(container, data){
 	var url = 'http://localhost:3000/tasks';
 	this.container = container;
-	this.functions = [];
-
-	this.functions.push(function(){
-		return($('.task-right').click(function(){
-			var id = {'id':$(this).attr('id'),'Task':''};
-			task = new Task(id);
-			task.deleteTask();
-		}))
-	});
+	
 
 	if (data) {
 		this.init(data);
@@ -31,7 +23,7 @@ Tasks.prototype.init = function(data) {
 };
 
 Tasks.prototype.draw = function() {
-  var builder = $('<div/>',{class:'row'});
+  var builder = $('<div/>',{class:'row', id:'allTasks'});
 
   for(var i = 0; i < this.tasks.length; i++) {
     builder.append(this.tasks[i].draw());
