@@ -21,6 +21,7 @@
   margin-bottom: 10px;
   margin-left: 10px;
   padding-top: 10%;
+  font-size: x-large;
 }
 .glyphicon-category {
   position: relative;
@@ -46,3 +47,26 @@
   float: right;
   margin-right: 10px;
 } 
+.category-edit{
+  background-color: #0DD6C7;
+  height: 50px;
+  width: 100%;
+  border-radius: 0 0 0 20px;
+}
+.category-delete{
+  background-color: #e53935;
+  height: 50px;
+  width: 100%;  
+  border-radius: 0 0 20px 0;
+}
+.category-delete:hover{
+  background-color: #c62828;
+}
+.category-left {
+  float: left;
+  width: 50%;
+}
+.category-right {
+  float: left;
+  width: 50%;
+}

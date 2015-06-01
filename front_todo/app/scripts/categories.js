@@ -24,7 +24,7 @@ Categories.prototype.init = function(data) {
 
 Categories.prototype.draw = function() {
 	'use strict';
-  var builder = $('<div/>',{class:'row'});
+  var builder = $('<div/>',{class:'row', id:'row-category'});
 
   for(var i = 0; i < this.categories.length; i++) {
     builder.append(this.categories[i].draw());

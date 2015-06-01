@@ -18,14 +18,12 @@ var Category = function(container, data){
 Category.prototype.init = function(data) {
   'use strict';
   this.id = data.id;
-  if (data.name === "uncategorized") {
+  if (data.name === "sin categoria") {
     this.name = "Sin categoria";
   } else {
     this.name = data.name;
-  }
-   
+  } 
 };
-
 Category.prototype.draw = function() {
 
   builder = $("<div/>",{id:'category_'+this.id,class:"col-md-3 col-sm-4 col-xs-12"}).append(
@@ -33,17 +31,17 @@ Category.prototype.draw = function() {
         $("<div/>",{class:"col-md-12"}).append(
           $("<div/>",{class:"degradado text-center"}).append(
             $("<div/>",{class:"row"}).append(
-              $("<div/>",{class:"col-md-12  task-category"}).html(this.name)
+              $("<div/>",{class:"col-md-12  task-category", id:'name_'+this.id}).html(this.name)
               ),
             $("<div/>",{class:"row"}).append(
               $("<div/>",{class:"col-md-12"}).append(
-                $("<button/>",{class:"category-button"}).append(
-                  $("<a/>",{href:"#"}).append(
+                $("<div/>",{class:"category-left", id:this.id}).append(
+                  $("<div/>",{class:"category-edit btn"}).append(
                     $("<i/>",{class:"glyphicon-category glyphicon-edit"})
                     )
                   ),
-                $("<button/>",{class:"category-button delete-category", id:this.id}).append(
-                  $("<a/>",{href:"#"}).append(
+                $("<div/>",{class:"category-right delete-category", id:this.id}).append(
+                  $("<div/>",{class: "category-delete btn"}).append(
                     $("<i/>",{class:"glyphicon-category glyphicon-trash"})
                     )
                   )

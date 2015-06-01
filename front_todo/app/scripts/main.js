@@ -10,24 +10,37 @@ $(function(){
 
 	var printNewCategory = function(data){
 		$('#categories').prepend('<option value="' + data.id + '">' + data.name + '</option>');
+		
 	};
-	var newCatergory = function(nameCategory){
+	var newCategory = function(nameCategory){
 		$.post('http://localhost:3000/categories',
-		{
-			name: nameCategory
-		},
-		 function(data, status){
-        if (data.name === nameCategory) {
-        	$('#nameError').html('');
-        	printNewCategory(data);
-        	$('#smallModal').modal('toggle');
-        }
-        else {
-        	$('#nameError').html('El nombre de la categoria debe ser unico');
-        	return;
-      }
-    });
+			{
+				name: nameCategory
+			},
+			function(data, status){
+		        if (data.name === nameCategory) {
+		        	$('#nameError').html('');
+		        	printNewCategory(data);
+		        	addCategory(data);
+		        	$('#smallModal').modal('toggle');
+		        } else {
+		        	$('#nameError').html('El nombre de la categoria debe ser unico');
+		        	return;
+		    	};
+		    	
+		    	
+	    	});
+	
 	};
+	$('#new-category-botton').click(function(){
+		$('#smallModal').show();
+			$('#newCategoryModal').click(function(){				 
+				newCategory($('#categoryName').val());
+				
+			});
+		$("input").empty()
+		$('#smallModal').modal('hide');	
+	});
 	var categorysTask = function(){
 		$.get('http://localhost:3000/categories', function(data){
 			for (var i = 0; i <= data.length-1; i++) {
@@ -62,7 +75,7 @@ $(function(){
 		$('#newCatergory').show();
 		categorysTask();
 			$('#newCategoryModal').click(function(){				 
-				newCatergory($('#categoryName').val());
+				newCategory($('#categoryName').val());
 			});
 			$('#taskNew').click(function(){
 				newTask($('#title').val(), $('select#priority').val(), 
@@ -100,14 +113,14 @@ $(function(){
 			
 			editTask(id, data);
 			$('#myModal').modal('toggle');
-			
+			$("input").empty()
 			console.log(id);
 			 
 		});
 
 	});
 
-		$(document).on("click",'.delete-category',function(){
+		$(document).on("click",'.category-right',function(){
 			id = this.id;
 			$.ajax({
 				url:'http://localhost:3000/categories/'+this.id,
@@ -129,6 +142,67 @@ $(function(){
 
 
 	});
+	var	editCategory = function(id, info){
+		$.ajax({
+		 		url:'http://localhost:3000/categories/'+id,
+		 		type:'put',
+		 		data: info,
+		 		success: function(data){
+		 			$('#name_'+data.id).empty();
+		 			$('#name_'+data.id).html(data.name);
+
+
+		 		//Esta es una solucion, pero es refrescando TODO
+		 		// 	$('.categoriesSection').empty();
+		 		// 	var $categoriesSection = $('.categoriesSection');
+					// var categories = new Categories($categoriesSection);			
+		 		}
+		 });
+	}
+	$(document).on("click",'.category-left',function(){
+			var id = this.id;
+			$('#editModal').modal('show');
+			$('#editCategoryModal').click(function(){
+				var info = {
+					name: $('#editCategoryName').val(),
+				}
+				editCategory(id, info);
+				$("input").empty()
+				$('#editModal').modal('hide');				 
+			});
+
+	});
+	
+	var addCategory = function(data){
+		console.log(data);
+		$("#row-category").append(
+			$("<div/>",{id:'category_'+data.id,class:"col-md-3 col-sm-4 col-xs-12"}).append(
+				$("<div/>",{class:"row category-header"}).append(
+					$("<div/>",{class:"col-md-12"}).append(
+						$("<div/>",{class:"degradado text-center"}).append(
+							$("<div/>",{class:"row"}).append(
+								$("<div/>",{class:"col-md-12  task-category", id:'name_'+data.id}).html(data.name)
+								),
+							$("<div/>",{class:"row"}).append(
+								$("<div/>",{class:"col-md-12"}).append(
+									$("<div/>",{class:"category-left", id:data.id}).append(
+										$("<div/>",{class:"category-edit btn"}).append(
+											$("<i/>",{class:"glyphicon-category glyphicon-edit"})
+											)
+										),
+									$("<div/>",{class:"category-right delete-category", id:data.id}).append(
+										$("<div/>",{class: "category-delete btn"}).append(
+											$("<i/>",{class:"glyphicon-category glyphicon-trash"})
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+	}
 
 ////////////////////////////////////
   // Everything to handle TimePicker

@@ -33,7 +33,7 @@
   margin-top: -10px;
   height: 100px;
   width: 90%;
-  overflow-y:auto;
+  overflow-y: auto;
   margin-bottom: 10px;
   margin-left: 20px;
 }
@@ -139,8 +139,6 @@ hr {
   height: 50px;
   width: 100%;
   border-radius: 0 0 0 20px;
-<<<<<<< HEAD
-=======
 }
 
 header{
@@ -186,5 +184,4 @@ header{
   border-radius: 20px 20px 20px 20px;
   width: 200px;
   background-color: #0dd6c7;
->>>>>>> 4763343266aa0e8dffd093b9228dcea610a2c42f
 }
