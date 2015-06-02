@@ -22,7 +22,8 @@ Task.prototype.init = function(data) {
   this.status = data.status;
   this.priority = data.priority;
   this.date = data.date;
-  this.category = data.category.name;  
+  this.category = data.category.name; 
+  this.category_id = data.category.id; 
 };
 
 Task.prototype.draw = function() {
@@ -36,7 +37,7 @@ Task.prototype.draw = function() {
               ),
             $("<div/>",{class:"col-md-9"}).append(
               $("<div/>",{class:"task-date"}).append(
-                $("<h4/>",{id:"date_"+this.id}).html(this.date)
+                $("<h4/>",{id:"date_"+this.id, value:this.date}).html(this.date)
                 )
               )
             ),
@@ -50,15 +51,15 @@ Task.prototype.draw = function() {
           $("<div/>",{class:"row"}).append(
             $("<div/>",{class:"col-md-12 text-center"}).append(
               $("<div/>",{class:"task-category"}).append(
-                $("<strong/>",{id:"category_"+this.id}).html(this.category)
+                $("<strong/>",{id:"category_"+this.id}).html(this.category).attr("data-id",this.category_id)
                 )
               )
             )
           ),
         $("<div/>",{class:"row"}).append(
           $("<div/>",{class:"col-md-12"}).append(
-            $("<div/>",{class:"task-left", id:'status_'+this.id}).append(
-              $("<div/>",{class:"task-done"}).append(                
+            $("<div/>",{class:"task-left", id:this.status+'_status'+'_'+this.id}).append(
+              $("<div/>",{class:"task-done", id:'status_'+this.id}).append(                
                 $("<input/>",{class:'check', type:"checkbox","checked":"checked","data-toggle":"toggle","data-style":"ios","data-on":"undone","data-onstyle":"danger","data-off":"done","data-offstyle":"success"})
                 )
               ),
