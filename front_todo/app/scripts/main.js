@@ -175,8 +175,8 @@ $(function(){
 	});
 
 ////////////////////////////////////
-  // Everything to handle TimePicker
-// $('#datetimepicker1').datetimepicker({
-//       format:'YYYY-MM-DD'
-// }); // Cierra DateTimePicker
+ // Everything to handle TimePicker
+$('#datetimepicker1').datetimepicker({
+      format:'YYYY-MM-DD'
+}); // Cierra DateTimePicker
 ////////////////////////////////////
