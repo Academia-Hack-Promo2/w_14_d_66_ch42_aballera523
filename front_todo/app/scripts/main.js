@@ -45,7 +45,7 @@ $(function(){
 				newCategory($('#categoryName').val());
 				
 			});
-		$("input").empty()
+		$("input").empty();
 		$('#smallModal').modal('hide');	
 	});
 	var categorysTask = function(){
@@ -54,7 +54,7 @@ $(function(){
 				$('#categories').append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
 			}
 		});
-	}
+	};
 	var	editTask = function(id, edit, query,taskId){
 		$.ajax({
 		 		url:'http://localhost:3000/tasks/'+id,
@@ -202,7 +202,7 @@ $(function(){
 					// var categories = new Categories($categoriesSection);			
 		 		}
 		 });
-	}
+	};
 	$(document).on("click",'.category-left',function(){
 			var id = this.id;
 			$('#editModal').modal('show');
@@ -211,7 +211,7 @@ $(function(){
 					name: $('#editCategoryName').val(),
 				}
 				editCategory(id, info);
-				$("input").empty()
+				$("input").empty();
 				$('#editModal').modal('hide');				 
 			});
 
@@ -246,7 +246,7 @@ $(function(){
 					)
 				)
 			);
-	}
+	};
 
 ////////////////////////////////////
  // Everything to handle TimePicker
